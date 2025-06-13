@@ -142,6 +142,36 @@
             padding-right: 4em;
             box-sizing: border-box;
         }
+
+        /* =================================== */
+        /* 모바일 뷰 팝업 스타일 개선             */
+        /* =================================== */
+        @media screen and (max-width: 736px) {
+
+            /* 1. 모바일에서는 팝업의 좌우 여백을 줄여 내용 공간을 확보합니다. */
+            #viewer .caption {
+                padding-left: 2.5em;
+                padding-right: 2.5em;
+            }
+
+            /* 2. 제목(h2)을 Flexbox 컨테이너로 만들어 내부 요소(제목 텍스트, 버튼)를 세로로 정렬합니다. */
+            #viewer h2 {
+                display: flex;
+                flex-direction: column; /* 아이템을 세로로 쌓도록 설정 */
+                align-items: center; /* 가운데 정렬 */
+            }
+
+            /* 3. 'More' 버튼의 위치를 조정합니다. */
+            .toggle-icon {
+                margin-left: 0; /* 기존 왼쪽 여백 제거 */
+                margin-top: 1.25em; /* 제목과의 상단 여백 추가 */
+            }
+
+            /* 4. 토글되어 열리는 설명 부분의 상단 여백을 살짝 줄여 일관성을 유지합니다. */
+            #viewer .caption.is-open .description-content {
+                margin-top: 1.25em;
+            }
+        }
     </style>
 </head>
 <body class="is-preload-0 is-preload-1 is-preload-2">
