@@ -143,31 +143,41 @@
             box-sizing: border-box;
         }
 
-        /* =================================== */
-        /* 모바일 뷰 팝업 스타일 개선             */
-        /* =================================== */
+        /* ================================================= */
+        /* 모바일 뷰 팝업 스타일 (제목 중앙, 설명 좌측 정렬) */
+        /* ================================================= */
         @media screen and (max-width: 736px) {
 
-            /* 1. 모바일에서는 팝업의 좌우 여백을 줄여 내용 공간을 확보합니다. */
+            /* 1. 모바일 팝업의 좌우 여백 조정 (변경 없음) */
             #viewer .caption {
                 padding-left: 2.5em;
                 padding-right: 2.5em;
             }
 
-            /* 2. 제목(h2)을 Flexbox 컨테이너로 만들어 내부 요소(제목 텍스트, 버튼)를 세로로 정렬합니다. */
+            /* 2. [변경] 팝업의 '모든' 제목(h2)을 중앙 정렬합니다. */
             #viewer h2 {
+                text-align: center;
+            }
+
+            /* 3. 'More' 버튼이 있는 제목은 버튼을 아래로 내리고 중앙에 배치합니다. */
+            #viewer h2:has(.toggle-icon) {
                 display: flex;
-                flex-direction: column; /* 아이템을 세로로 쌓도록 설정 */
-                align-items: center; /* 가운데 정렬 */
+                flex-direction: column;
+                align-items: center;
             }
 
-            /* 3. 'More' 버튼의 위치를 조정합니다. */
+            /* 4. 'More' 버튼의 위치를 조정합니다. (변경 없음) */
             .toggle-icon {
-                margin-left: 0; /* 기존 왼쪽 여백 제거 */
-                margin-top: 1.25em; /* 제목과의 상단 여백 추가 */
+                margin-left: 0;
+                margin-top: 1.25em;
             }
 
-            /* 4. 토글되어 열리는 설명 부분의 상단 여백을 살짝 줄여 일관성을 유지합니다. */
+            /* 5. [핵심] 'More'를 눌러 나오는 상세 설명(<ul>)은 왼쪽 정렬을 유지하도록 명시합니다. */
+            #viewer .description-content {
+                text-align: left;
+            }
+
+            /* 6. 토글 설명 부분의 여백 조정 (변경 없음) */
             #viewer .caption.is-open .description-content {
                 margin-top: 1.25em;
             }
