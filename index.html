@@ -1,19 +1,19 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Donghyun Kang's Portfolio</title>
+    <title>Kang's Gallery</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <style>
-        /* 썸네일 하단 필터 컨테이너 */
+        /* 필터 버튼 등 기본 스타일 (변경 없음) */
         #keyword-filters-wrapper {
             text-align: center;
             padding: 1em 2em 2em 2em;
         }
-        /* 필터 버튼 */
+
         #keyword-filters a {
             display: inline-block;
             padding: 0.5em 1em;
@@ -28,94 +28,219 @@
             transition: background-color 0.2s ease, color 0.2s ease;
         }
 
-            #keyword-filters a:hover {
-                background-color: #fff;
-                color: #333;
-            }
-
-            #keyword-filters a.active {
-                background-color: #ffffff;
-                color: #000000;
-                font-weight: bold;
-            }
-
-        /* 필터링 애니메이션 */
-        #thumbnails article {
-            transition: transform 0.3s ease, opacity 0.3s ease;
+        #keyword-filters a:hover {
+            color: #000000;
+            background-color: rgba(0, 150, 108, 0.1);
         }
 
-            #thumbnails article.hidden {
-                transform: scale(0.9);
-                opacity: 0;
-                width: 0;
-                height: 0;
-                padding: 0;
-                margin: 0;
-                overflow: hidden;
+        #keyword-filters a.active {
+            background-color: #00966C;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        #thumbnails article.hidden {
+            display: none;
+        }
+
+        /* =================================== */
+        /* 포트폴리오 헤더 스타일 개선         */
+        /* =================================== */
+
+        /* 1. 이름 (가장 중요): 포인트 컬러로 강조 */
+        #header h1 {
+            color: #00966C; /* 포인트 컬러 (딥 블루) */
+        }
+
+        /* 2. 직책, 태그라인이 담긴 문단 위아래 간격 조정 */
+        #header .subtitle {
+            margin-bottom: 2em; /* 아이콘과의 간격 확보 */
+        }
+
+            /* 3. 직책: 연한 회색으로 유지 (부가 정보) */
+            #header .subtitle .title {
+                color: #888888;
+                font-size: 0.9em;
             }
+
+            /* 4. 태그라인: 더 연한 회색으로 (부가 정보) */
+            #header .subtitle .tagline {
+                color: #AAAAAA;
+                font-size: 0.8em;
+                font-style: italic;
+            }
+
+        /* 5. 본문 (소개글): 가독성을 위해 진한 회색으로 변경 */
+        #header p:last-of-type { /* 헤더의 마지막 p 태그를 선택 */
+            color: #555555;
+        }
+
+        /* 6. 아이콘 색상: 기본 색은 유지하고, 마우스를 올리면 포인트 컬러로 변경 */
+        #header .icons .icon:hover {
+            color: #005f73 !important; /* 포인트 컬러 (딥 블루) */
+        }
+
+        /* =================================== */
+        /* 토글 기능 스타일 (진짜 최종 애니메이션) */
+        /* =================================== */
+
+        /* [수정됨] 상세 설명의 모든 애니메이션을 동기화하여 부드러움 극대화 */
+        #viewer .description-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            margin-top: 0; /* 시작 여백 0 */
+            /* 높이, 투명도, 여백을 모두 같은 시간, 같은 방식으로 애니메이션 */
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+        }
+
+        /* 'is-open' 클래스가 붙으면 목표 상태로 변경 */
+        #viewer .caption.is-open .description-content {
+            max-height: 1000px;
+            opacity: 1;
+            margin-top: 1.5em; /* 목표 여백 1.5em */
+        }
+
+        /* 버튼 스타일 (변경 없음) */
+        .toggle-icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 1em;
+            padding: 0.5em 1em;
+            background-color: #f0f0f0;
+            color: #333;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .toggle-icon:hover {
+            background-color: #ddd;
+            transform: scale(1.05);
+        }
+
+        .toggle-icon::before {
+            content: 'More';
+        }
+
+        #viewer .caption.is-open .toggle-icon {
+            background-color: #00966C;
+            color: #ffffff;
+        }
+
+        #viewer .caption.is-open .toggle-icon::before {
+            content: 'Close';
+        }
+
+        /* 팝업 좌우 화살표와의 충돌 방지 패딩 (변경 없음) */
+        #viewer .caption {
+            padding-left: 4em;
+            padding-right: 4em;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body class="is-preload-0 is-preload-1 is-preload-2">
 
     <div id="main">
-
         <header id="header">
             <img src="images/fulls/02.jpg" alt="Donghyun Kang" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1em;" />
             <h1>Donghyun Kang</h1>
-            <p>Graphics Programmer</p>
+            <p class="subtitle">
+                <span class="title">Graphics Programmer</span><br>
+                <span class="tagline">Driven by curiosity, proven by results.</span>
+            </p>
+
             <ul class="icons">
                 <li><a href="https://drive.google.com/file/d/1LktIz-0ZJ0IqXkRXI5PDva3LUo8O3aV4/view?usp=sharing" class="icon solid fa-file-alt" target="_blank"><span class="label">Resume</span></a></li>
                 <li><a href="https://linkedin.com/in/kang-dev" class="icon brands fa-linkedin-in" target="_blank"><span class="label">LinkedIn</span></a></li>
                 <li><a href="https://github.com/donghyunkang-digipen" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
                 <li><a href="mailto:donghyunkang.dev@gmail.com" class="icon fa-envelope"><span class="label">Email</span></a></li>
             </ul>
-            <p>Hi there! I'm Donghyun Kang! Welcome to my page I like to watch Netflix! Enjoy!</p>
+
+            <p>
+                Hello, I'm Donghyun Kang! <br>
+                Welcome to my digital gallery.<br>
+                This space is a collection of<br>
+                my thoughts, experiences,<br>
+                and the work I've created.<br>
+                I hope you enjoy your visit!<br>
+            </p>
+
         </header>
 
         <section id="thumbnails">
-
             <article data-keywords="demo-reel">
                 <a class="thumbnail" href="images/fulls/01.jpg" data-position="left center"><img src="images/thumbs/01.jpg" alt="Demo Reel" /></a>
-                <h2>Main Demo Reel</h2>
-                <p>This is my Demo reel! Enjoy!</p>
+                <h2>Demo Reel <br><span style="font-size: 0.7em; color: #888; font-weight: 400;">Click to watch the video!</span></h2>
             </article>
 
             <article data-keywords="unreal-engine Blueprint Niagara cpp">
                 <a class="thumbnail" href="images/fulls/02.jpg"><img src="images/thumbs/02.jpg" alt="" /></a>
-                <h2>Vivamus convallis libero</h2>
-                <p>Sed velit lacus, laoreet at venenatis convallis in lorem tincidunt.</p>
+                <h2>The Children Are Sleeping | Unreal Engine 5, Niagara, Blueprint<br><span style="font-size: 0.7em; color: #888; font-weight: 400;">Led VFX creation and rendering optimization as the team's Graphics Programmer on a 13-member team.</span><span class="toggle-icon"></span></h2>
+                <div class="description-content">
+                    <ul>
+                        <li>Engineered a dynamic post-processing system to visually represent player sanity with vignette and grayscale effects.</li>
+                        <li>Authored key gameplay VFX in Niagara based on artist’s concept art, including item glows and monster threat auras.</li>
+                        <li>Profiled the rendering pipeline with Unreal Insights to identify and resolve performance bottlenecks.</li>
+                        <li>Implemented strategic lighting optimizations, such as using static shadows in Lumen, to boost framerates by over 30 FPS.</li>
+                        <li>Developed the technical art pipeline with parameter-driven materials and VFX documentation to accelerate the team's workflow.</li>
+                    </ul>
+                </div>
             </article>
 
             <article data-keywords="cpp OpenGL GLSL">
                 <a class="thumbnail" href="images/fulls/03.jpg" data-position="top center"><img src="images/thumbs/03.jpg" alt="" /></a>
-                <h2>Nec accumsan enim felis</h2>
-                <p>Maecenas eleifend tellus ut turpis eleifend, vitae pretium faucibus.</p>
+                <h2>Kingdom of Boardgames | C++, OpenGL, GLSL<br><span style="font-size: 0.7em; color: #888; font-weight: 400;">Implemented a custom shader component and authored shaders in the custom 2D game engine as a Tool Developer.</span><span class="toggle-icon"></span></h2>
+                <div class="description-content">
+                    <ul>
+                        <li>Architected a centralized shader manager using a custom GLShaderArray to load and apply all shaders instantly.</li>
+                        <li>Authored four GLSL shaders that add dynamic fog, rain, lightning, and flowing waters, boosting overall visual immersion.</li>
+                        <li>Enabled shader animations by developing a custom stopwatch component to pass the engine’s delta time to fragment shaders.</li>
+                        <li>Provided an accessible shader pipeline that allowed team members to apply visual effects using a simple Enum for shader type.</li>
+                    </ul>
+                </div>
             </article>
 
             <article data-keywords="Unity csharp">
                 <a class="thumbnail" href="images/fulls/04.jpg"><img src="images/thumbs/04.jpg" alt="" /></a>
-                <h2>Donec maximus nisi eget</h2>
-                <p>Tristique in nulla vel congue. Sed sociis natoque parturient nascetur.</p>
+                <h2>If I Were the King | Unity, C#<br><span style="font-size: 0.7em; color: #888; font-weight: 400;">Implemented UI from scratch in “If I Were the King”, serving as the dedicated UI/UX programmer, on a 6-member team.</span><span class="toggle-icon"></span></h2>
+                <div class="description-content">
+                    <ul>
+                        <li>Wrote C# scripts and used UGUI to implement a tutorial sequence, settings panels, and HUDs with dynamic resource gauges. </li>
+                        <li>Utilized DOTween library and Unity’s Timeline to make procedural UI animations and narrative cutscenes with visual effects.</li>
+                        <li>Earned a formal certification for successfully completing the program and delivering the final team project over a 3-week sprint.</li>
+                    </ul>
+                </div>
             </article>
 
             <article data-keywords="cpp OpenGL SDL2 SFML">
                 <a class="thumbnail" href="images/fulls/05.jpg" data-position="top center"><img src="images/thumbs/05.jpg" alt="" /></a>
-                <h2>Nullam vitae nunc vulputate</h2>
-                <p>In pellentesque cursus velit id posuere. Donec vehicula nulla.</p>
+                <h2>Palagang | C++, OpenGL, SDL2, SFML<br><span style="font-size: 0.7em; color: #888; font-weight: 400;">AArchitected a 2D game engine from scratch, as the team’s Engine Programmer and Producer.</span><span class="toggle-icon"></span></h2>
+                <div class="description-content">
+                    <ul>
+                        <li>Integrated foundational libraries for core game engine functions: SDL2 (Window), OpenGL (Graphics), SFML (Audio).</li>
+                        <li>Diagnosed and resolved critical engine-level bugs, caused by dangling pointers and an input processing error.</li>
+                        <li>Engineered a font rendering system that parsed and drew characters from a single sprite sheet.</li>
+                        <li>Developed a trigger system for complex AI state changes and a Verlet-based physics engine with AABB collision detection.</li>
+                    </ul>
+                </div>
             </article>
         </section>
 
         <div id="keyword-filters-wrapper">
             <div id="keyword-filters"></div>
         </div>
-
         <footer id="footer">
             <ul class="copyright">
-                <li>&copy; Donghyun Kang.</li>
+                <li>&copy; 2025. Donghyun Kang all rights reserved.</li>
                 <li>Design: <a href="http://html5up.net">HTML5 UP</a>.</li>
             </ul>
         </footer>
-
     </div>
 
     <script src="assets/js/jquery.min.js"></script>
@@ -125,27 +250,58 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const articles = document.querySelectorAll('#thumbnails article');
-            const filtersContainer = document.getElementById('keyword-filters');
-            const keywordDisplayMap = {
-                'cpp': 'C++',
-                'csharp': 'C#',
-                'unreal-engine': 'Unreal Engine',
-                'demo-reel': 'Demo Reel'
-            };
-            let allKeywords = new Set();
 
-            // 1. 모든 프로젝트에서 키워드만 수집
-            articles.forEach(article => {
-                const keywordsString = article.dataset.keywords;
-                if (keywordsString) {
-                    const keywords = keywordsString.split(' ').filter(k => k);
-                    keywords.forEach(keyword => allKeywords.add(keyword));
+            // --- 모든 클릭 이벤트를 한 곳에서 처리 ---
+            document.body.addEventListener('click', function (e) {
+
+                // Case 1: 뷰어(팝업)의 토글 아이콘을 클릭했을 때
+                const toggleIcon = e.target.closest('#viewer .toggle-icon');
+                if (toggleIcon) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    // 아이콘의 부모인 .caption을 찾아 'is-open' 클래스를 붙였다 뗐다 함
+                    const caption = e.target.closest('#viewer .caption');
+                    if (caption) {
+                        caption.classList.toggle('is-open');
+                    }
+                    return; // 작업 완료
+                }
+
+                // Case 2: 키워드 필터 버튼을 클릭했을 때
+                if (e.target.classList.contains('filter-trigger')) {
+                    e.preventDefault();
+                    const articles = document.querySelectorAll('#thumbnails article');
+                    const selectedKeyword = e.target.dataset.keyword;
+
+                    document.querySelectorAll('.filter-trigger').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+
+                    articles.forEach(article => {
+                        const hasKeyword = article.dataset.keywords && article.dataset.keywords.includes(selectedKeyword);
+                        if (selectedKeyword === 'all' || hasKeyword) {
+                            article.classList.remove('hidden');
+                        } else {
+                            article.classList.add('hidden');
+                        }
+                    });
+                    return; // 작업 완료
                 }
             });
 
-            // 2. 썸네일 하단 컨테이너에 필터 버튼 생성
-            if (filtersContainer && allKeywords.size > 0) {
+            // --- 페이지 로딩 시 키워드 필터 버튼 생성 (기존과 동일) ---
+            const articles = document.querySelectorAll('#thumbnails article');
+            const filtersContainer = document.getElementById('keyword-filters');
+            if (filtersContainer) {
+                const keywordDisplayMap = { 'cpp': 'C++', 'csharp': 'C#', 'unreal-engine': 'Unreal Engine', 'demo-reel': 'Demo Reel' };
+                let allKeywords = new Set();
+                articles.forEach(article => {
+                    const keywordsString = article.dataset.keywords;
+                    if (keywordsString) {
+                        keywordsString.split(' ').filter(k => k).forEach(keyword => allKeywords.add(keyword));
+                    }
+                });
+
                 const allButton = document.createElement('a');
                 allButton.href = '#';
                 allButton.className = 'active filter-trigger';
@@ -162,26 +318,6 @@
                     filtersContainer.appendChild(button);
                 });
             }
-
-            // 3. 필터링 클릭 이벤트 처리
-            document.body.addEventListener('click', function (e) {
-                if (e.target.classList.contains('filter-trigger')) {
-                    e.preventDefault();
-                    const selectedKeyword = e.target.dataset.keyword;
-
-                    document.querySelectorAll('.filter-trigger').forEach(btn => btn.classList.remove('active'));
-                    // 헤더와 본문에 있는 모든 관련 버튼에 active 클래스 추가
-                    document.querySelectorAll(`.filter-trigger[data-keyword="${selectedKeyword}"]`).forEach(btn => btn.classList.add('active'));
-
-                    articles.forEach(article => {
-                        if (selectedKeyword === 'all' || (article.dataset.keywords && article.dataset.keywords.includes(selectedKeyword))) {
-                            article.classList.remove('hidden');
-                        } else {
-                            article.classList.add('hidden');
-                        }
-                    });
-                }
-            });
         });
     </script>
 </body>
