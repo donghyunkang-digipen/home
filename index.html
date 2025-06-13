@@ -1,81 +1,188 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donghyun Kang</title>
+    <title>Donghyun Kang's Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        /* 썸네일 하단 필터 컨테이너 */
+        #keyword-filters-wrapper {
+            text-align: center;
+            padding: 1em 2em 2em 2em;
         }
-        .header {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            padding: 20px;
+        /* 필터 버튼 */
+        #keyword-filters a {
+            display: inline-block;
+            padding: 0.5em 1em;
+            margin: 0.25em 0.15em;
             background-color: #333;
-            color: white;
-        }
-        .header img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-right: 20px;
-        }
-        .header h1 {
-            margin: 0;
-        }
-        .nav {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-            padding: 10px 0;
-        }
-        .nav a {
-            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            color: #fff;
             text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 10px;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
-        .nav a:hover {
-            background-color: #555;
+
+            #keyword-filters a:hover {
+                background-color: #fff;
+                color: #333;
+            }
+
+            #keyword-filters a.active {
+                background-color: #ffffff;
+                color: #000000;
+                font-weight: bold;
+            }
+
+        /* 필터링 애니메이션 */
+        #thumbnails article {
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
-            padding: 20px;
-            width: 80%;
-        }
-        .gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
+
+            #thumbnails article.hidden {
+                transform: scale(0.9);
+                opacity: 0;
+                width: 0;
+                height: 0;
+                padding: 0;
+                margin: 0;
+                overflow: hidden;
+            }
     </style>
 </head>
-<body>
-    <div class="header">
-        <img src="profile.jpg" alt="Donghyun Kang">
-        <h1>Donghyun Kang</h1>
+<body class="is-preload-0 is-preload-1 is-preload-2">
+
+    <div id="main">
+
+        <header id="header">
+            <img src="images/fulls/02.jpg" alt="Donghyun Kang" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1em;" />
+            <h1>Donghyun Kang</h1>
+            <p>Graphics Programmer</p>
+            <ul class="icons">
+                <li><a href="https://drive.google.com/file/d/1LktIz-0ZJ0IqXkRXI5PDva3LUo8O3aV4/view?usp=sharing" class="icon solid fa-file-alt" target="_blank"><span class="label">Resume</span></a></li>
+                <li><a href="https://linkedin.com/in/kang-dev" class="icon brands fa-linkedin-in" target="_blank"><span class="label">LinkedIn</span></a></li>
+                <li><a href="https://github.com/donghyunkang-digipen" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
+                <li><a href="mailto:donghyunkang.dev@gmail.com" class="icon fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+            <p>Hi there! I'm Donghyun Kang! Welcome to my page I like to watch Netflix! Enjoy!</p>
+        </header>
+
+        <section id="thumbnails">
+
+            <article data-keywords="demo-reel">
+                <a class="thumbnail" href="images/fulls/01.jpg" data-position="left center"><img src="images/thumbs/01.jpg" alt="Demo Reel" /></a>
+                <h2>Main Demo Reel</h2>
+                <p>This is my Demo reel! Enjoy!</p>
+            </article>
+
+            <article data-keywords="unreal-engine Blueprint Niagara cpp">
+                <a class="thumbnail" href="images/fulls/02.jpg"><img src="images/thumbs/02.jpg" alt="" /></a>
+                <h2>Vivamus convallis libero</h2>
+                <p>Sed velit lacus, laoreet at venenatis convallis in lorem tincidunt.</p>
+            </article>
+
+            <article data-keywords="cpp OpenGL GLSL">
+                <a class="thumbnail" href="images/fulls/03.jpg" data-position="top center"><img src="images/thumbs/03.jpg" alt="" /></a>
+                <h2>Nec accumsan enim felis</h2>
+                <p>Maecenas eleifend tellus ut turpis eleifend, vitae pretium faucibus.</p>
+            </article>
+
+            <article data-keywords="Unity csharp">
+                <a class="thumbnail" href="images/fulls/04.jpg"><img src="images/thumbs/04.jpg" alt="" /></a>
+                <h2>Donec maximus nisi eget</h2>
+                <p>Tristique in nulla vel congue. Sed sociis natoque parturient nascetur.</p>
+            </article>
+
+            <article data-keywords="cpp OpenGL SDL2 SFML">
+                <a class="thumbnail" href="images/fulls/05.jpg" data-position="top center"><img src="images/thumbs/05.jpg" alt="" /></a>
+                <h2>Nullam vitae nunc vulputate</h2>
+                <p>In pellentesque cursus velit id posuere. Donec vehicula nulla.</p>
+            </article>
+        </section>
+
+        <div id="keyword-filters-wrapper">
+            <div id="keyword-filters"></div>
+        </div>
+
+        <footer id="footer">
+            <ul class="copyright">
+                <li>&copy; Donghyun Kang.</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a>.</li>
+            </ul>
+        </footer>
+
     </div>
-    <div class="nav">
-        <a href="#about">About Me</a>
-        <a href="#portfolio">Portfolios</a>
-        <a href="#work">Work Experience</a>
-    </div>
-    
-    <section id="portfolio" class="gallery">
-        <img src="portfolio1.jpg" alt="Portfolio 1">
-        <img src="portfolio2.jpg" alt="Portfolio 2">
-        <img src="portfolio3.jpg" alt="Portfolio 3">
-        <img src="portfolio4.jpg" alt="Portfolio 4">
-    </section>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const articles = document.querySelectorAll('#thumbnails article');
+            const filtersContainer = document.getElementById('keyword-filters');
+            const keywordDisplayMap = {
+                'cpp': 'C++',
+                'csharp': 'C#',
+                'unreal-engine': 'Unreal Engine',
+                'demo-reel': 'Demo Reel'
+            };
+            let allKeywords = new Set();
+
+            // 1. 모든 프로젝트에서 키워드만 수집
+            articles.forEach(article => {
+                const keywordsString = article.dataset.keywords;
+                if (keywordsString) {
+                    const keywords = keywordsString.split(' ').filter(k => k);
+                    keywords.forEach(keyword => allKeywords.add(keyword));
+                }
+            });
+
+            // 2. 썸네일 하단 컨테이너에 필터 버튼 생성
+            if (filtersContainer && allKeywords.size > 0) {
+                const allButton = document.createElement('a');
+                allButton.href = '#';
+                allButton.className = 'active filter-trigger';
+                allButton.textContent = 'All';
+                allButton.dataset.keyword = 'all';
+                filtersContainer.appendChild(allButton);
+
+                Array.from(allKeywords).sort().forEach(keyword => {
+                    const button = document.createElement('a');
+                    button.href = '#';
+                    button.className = 'filter-trigger';
+                    button.textContent = keywordDisplayMap[keyword] || keyword;
+                    button.dataset.keyword = keyword;
+                    filtersContainer.appendChild(button);
+                });
+            }
+
+            // 3. 필터링 클릭 이벤트 처리
+            document.body.addEventListener('click', function (e) {
+                if (e.target.classList.contains('filter-trigger')) {
+                    e.preventDefault();
+                    const selectedKeyword = e.target.dataset.keyword;
+
+                    document.querySelectorAll('.filter-trigger').forEach(btn => btn.classList.remove('active'));
+                    // 헤더와 본문에 있는 모든 관련 버튼에 active 클래스 추가
+                    document.querySelectorAll(`.filter-trigger[data-keyword="${selectedKeyword}"]`).forEach(btn => btn.classList.add('active'));
+
+                    articles.forEach(article => {
+                        if (selectedKeyword === 'all' || (article.dataset.keywords && article.dataset.keywords.includes(selectedKeyword))) {
+                            article.classList.remove('hidden');
+                        } else {
+                            article.classList.add('hidden');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
