@@ -399,7 +399,10 @@ var main = (function($) { var _ = {
 				});
 
 		// Create slides from thumbnails.
-			_.$thumbnails.children()
+			_.$thumbnails.children().filter(function ()
+			{
+				return $(this).children('.thumbnail').length;
+			})
 				.each(function() {
 
 					var	$this = $(this),

@@ -183,6 +183,24 @@
                 margin-top: 1.25em;
             }
         }
+
+        /* =================================== */
+        /* 섹션 부제목 스타일                  */
+        /* =================================== */
+        .section-title {
+            color: #00966C;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0.6em;
+            margin-bottom: 1em;
+            border-bottom: 2px solid #00966C;
+            padding-bottom: 0.1em;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
     </style>
 </head>
 <body class="is-preload-0 is-preload-1 is-preload-2">
@@ -215,10 +233,15 @@
         </header>
 
         <section id="thumbnails">
+
+            <h2 class="section-title">Demo Reel</h2>
+
             <article data-keywords="demo-reel">
                 <a class="thumbnail" href="images/fulls/01.jpg" data-position="left center"><img src="images/thumbs/01.jpg" alt="Demo Reel" /></a>
                 <h2>Demo Reel <br><span style="font-size: 0.7em; color: #888; font-weight: 400;">Click to watch the video!</span></h2>
             </article>
+
+            <h2 class="section-title">Projects</h2>
 
             <article data-keywords="unreal-engine Blueprint Niagara cpp">
                 <a class="thumbnail" href="images/fulls/02.jpg"><img src="images/thumbs/02.jpg" alt="" /></a>
@@ -279,7 +302,8 @@
         <footer id="footer">
             <ul class="copyright">
                 <li>&copy; 2025 Donghyun Kang. All rights reserved.</li>
-                <li>Design: <a href="http://html5up.net">HTML5 UP</a>.</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a>.<br>Modifications by Donghyun Kang.</li>
+
             </ul>
         </footer>
     </div>
@@ -319,6 +343,11 @@
                     e.target.classList.add('active');
 
                     articles.forEach(article => {
+                        if (article.dataset.keywords === 'demo-reel') {
+                            article.classList.remove('hidden');
+                            return; // 다음 article로 넘어갑니다.
+                        }
+
                         const hasKeyword = article.dataset.keywords && article.dataset.keywords.includes(selectedKeyword);
                         if (selectedKeyword === 'all' || hasKeyword) {
                             article.classList.remove('hidden');
