@@ -191,6 +191,8 @@ var main = (function($) { var _ = {
 						_.$body.removeClass('is-preload-2');
 					}, 100 + Math.max(_.settings.layoutDuration - 150, 0));
 
+					_.$main.scrollTop(0);
+
 				});
 
 			// Disable animations/transitions on resize.
@@ -542,9 +544,17 @@ var main = (function($) { var _ = {
 		// Activate new slide.
 
 			// Thumbnail.
-				newSlide.$parent
-					.addClass('active')
-					.focus();
+				// newSlide.$parent
+				// 	.addClass('active')
+				// 	.focus();
+
+				newSlide.$parent.addClass('active');
+				var el = newSlide.$parent.get(0);
+				if (el && el.focus) {
+  				// preventScroll 옵션으로 패널이 가운데로 이동하는 문제 방지
+  				try { el.focus({ preventScroll: true }); }
+  				catch(e) { el.focus(); } // 구형 브라우저 대비
+				}
 
 			// Slide.
 				var f = function() {
