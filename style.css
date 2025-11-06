@@ -151,10 +151,13 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #00af43 100%);
     color: white;
     padding-top: 80px;
+    position: relative; /* 추가 */
 }
 
 .hero-content {
     max-width: 700px;
+    position: relative; /* 추가 */
+    z-index: 1; /* 텍스트를 애니메이션 위로 */
 }
 
 .hero-title {
@@ -178,6 +181,46 @@ body {
     margin-bottom: 2rem;
     opacity: 0.9;
     line-height: 1.8;
+}
+
+/* 모바일 CSS 애니메이션 */
+.hero-mobile-animation::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(251,191,36,0.4) 0%, rgba(251,191,36,0.1) 40%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: mobileExplode 3s ease-out infinite;
+}
+
+.hero-mobile-animation::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(251,191,36,0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: mobileExplode 3s ease-out infinite 1.5s;
+}
+
+@keyframes mobileExplode {
+    0% {
+        width: 100px;
+        height: 100px;
+        opacity: 1;
+    }
+    100% {
+        width: 400px;
+        height: 400px;
+        opacity: 0;
+    }
 }
 
 /* =================================

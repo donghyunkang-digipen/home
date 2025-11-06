@@ -6,6 +6,120 @@
     <title>Donghyun "Danny" Kang - Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<!-- Three.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+// DOM이 로드될 때까지 기다리기
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Script loaded!'); // 디버깅용
+    
+    const isMobile = window.innerWidth < 768;
+    console.log('Is mobile:', isMobile); // 디버깅용
+
+    if (!isMobile) {
+        // 데스크탑: WebGL
+        console.log('Loading WebGL...'); // 디버깅용
+        
+        const heroSection = document.querySelector('.hero');
+        if (!heroSection) {
+            console.error('Hero section not found!');
+            return;
+        }
+        
+        const canvas = document.createElement('canvas');
+        canvas.id = 'webgl-canvas';
+        canvas.style.position = 'absolute';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.zIndex = '0';
+        heroSection.insertBefore(canvas, heroSection.firstChild);
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        camera.position.z = 5;
+
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 3000;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0xfbbf24,
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending
+        });
+
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        let time = 0;
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            time += 0.001;
+            
+            const positions = particlesMesh.geometry.attributes.position.array;
+            for(let i = 0; i < particlesCount; i++) {
+                const i3 = i * 3;
+                const x = positions[i3];
+                const y = positions[i3 + 1];
+                const z = positions[i3 + 2];
+                
+                const distance = Math.sqrt(x*x + y*y + z*z);
+                if(distance < 5) {
+                    positions[i3] = x * (1 + 0.005);
+                    positions[i3 + 1] = y * (1 + 0.005);
+                    positions[i3 + 2] = z * (1 + 0.005);
+                } else {
+                    positions[i3] = (Math.random() - 0.5) * 0.5;
+                    positions[i3 + 1] = (Math.random() - 0.5) * 0.5;
+                    positions[i3 + 2] = (Math.random() - 0.5) * 0.5;
+                }
+            }
+            particlesMesh.geometry.attributes.position.needsUpdate = true;
+            
+            particlesMesh.rotation.y = time * 0.3;
+            particlesMesh.rotation.x = time * 0.1;
+            
+            renderer.render(scene, camera);
+        }
+
+        animate();
+        console.log('WebGL started!'); // 디버깅용
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+        });
+        
+    } else {
+        // 모바일: CSS 애니메이션
+        console.log('Loading CSS animation...'); // 디버깅용
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) {
+            heroSection.classList.add('hero-mobile-animation');
+            console.log('CSS animation added!'); // 디버깅용
+        }
+    }
+});
+</script>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
