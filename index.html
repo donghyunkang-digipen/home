@@ -1,399 +1,422 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Donghyun Kang</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    <link rel="icon" href="images/icons/letter-k.png" type="image/x-icon">
-
-    <style>
-        /* 필터 버튼 등 기본 스타일 (변경 없음) */
-        #keyword-filters-wrapper {
-            text-align: center;
-            padding: 1em 2em 2em 2em;
-        }
-
-        #keyword-filters a {
-            display: inline-block;
-            padding: 0.5em 1em;
-            margin: 0.25em 0.15em;
-            background-color: #333;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.9em;
-            font-weight: 500;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
-            #keyword-filters a:hover {
-                color: #000000;
-                background-color: rgba(0, 150, 108, 0.1);
-            }
-
-            #keyword-filters a.active {
-                background-color: #00966C;
-                color: #ffffff;
-                font-weight: bold;
-            }
-
-        #thumbnails article.hidden {
-            display: none;
-        }
-
-        /* =================================== */
-        /* 포트폴리오 헤더 스타일 개선         */
-        /* =================================== */
-
-        /* 1. 이름 (가장 중요): 포인트 컬러로 강조 */
-        #header h1 {
-            color: #00966C; /* 포인트 컬러 (딥 블루) */
-        }
-
-        /* 2. 직책, 태그라인이 담긴 문단 위아래 간격 조정 */
-        #header .subtitle {
-            margin-bottom: 2em; /* 아이콘과의 간격 확보 */
-        }
-
-            /* 3. 직책: 연한 회색으로 유지 (부가 정보) */
-            #header .subtitle .title {
-                color: #888888;
-                font-size: 0.9em;
-            }
-
-            /* 4. 태그라인: 더 연한 회색으로 (부가 정보) */
-            #header .subtitle .tagline {
-                color: #AAAAAA;
-                font-size: 0.8em;
-                font-style: italic;
-            }
-
-        /* 5. 본문 (소개글): 가독성을 위해 진한 회색으로 변경 */
-        #header p:last-of-type { /* 헤더의 마지막 p 태그를 선택 */
-            color: #555555;
-        }
-
-        /* 6. 아이콘 색상: 기본 색은 유지하고, 마우스를 올리면 포인트 컬러로 변경 */
-        #header .icons .icon:hover {
-            color: #005f73 !important; /* 포인트 컬러 (딥 블루) */
-        }
-
-        /* =================================== */
-        /* 토글 기능 스타일 (진짜 최종 애니메이션) */
-        /* =================================== */
-
-        /* [수정됨] 상세 설명의 모든 애니메이션을 동기화하여 부드러움 극대화 */
-        #viewer .description-content {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            margin-top: 0; /* 시작 여백 0 */
-            /* 높이, 투명도, 여백을 모두 같은 시간, 같은 방식으로 애니메이션 */
-            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out;
-        }
-
-        /* 'is-open' 클래스가 붙으면 목표 상태로 변경 */
-        #viewer .caption.is-open .description-content {
-            max-height: 1000px;
-            opacity: 1;
-            margin-top: 1.5em; /* 목표 여백 1.5em */
-        }
-
-        /* 버튼 스타일 (변경 없음) */
-        .toggle-icon {
-            display: inline-block;
-            vertical-align: middle;
-            margin-left: 1em;
-            padding: 0.5em 1em;
-            background-color: #f0f0f0;
-            color: #333;
-            border-radius: 20px;
-            font-size: 0.75em;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-        }
-
-            .toggle-icon:hover {
-                background-color: #ddd;
-                transform: scale(1.05);
-            }
-
-            .toggle-icon::before {
-                content: 'More';
-            }
-
-        #viewer .caption.is-open .toggle-icon {
-            background-color: #00966C;
-            color: #ffffff;
-        }
-
-            #viewer .caption.is-open .toggle-icon::before {
-                content: 'Close';
-            }
-
-        /* 팝업 좌우 화살표와의 충돌 방지 패딩 (변경 없음) */
-        #viewer .caption {
-            padding-left: 4em;
-            padding-right: 4em;
-            box-sizing: border-box;
-        }
-
-        /* ================================================= */
-        /* 모바일 뷰 팝업 스타일 (제목 중앙, 설명 좌측 정렬) */
-        /* ================================================= */
-        @media screen and (max-width: 736px) {
-
-            /* 1. 모바일 팝업의 좌우 여백 조정 (변경 없음) */
-            #viewer .caption {
-                padding-left: 2.5em;
-                padding-right: 2.5em;
-            }
-
-            /* 2. [변경] 팝업의 '모든' 제목(h2)을 중앙 정렬합니다. */
-            #viewer h2 {
-                text-align: center;
-            }
-
-                /* 3. 'More' 버튼이 있는 제목은 버튼을 아래로 내리고 중앙에 배치합니다. */
-                #viewer h2:has(.toggle-icon) {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-            /* 4. 'More' 버튼의 위치를 조정합니다. (변경 없음) */
-            .toggle-icon {
-                margin-left: 0;
-                margin-top: 1.25em;
-            }
-
-            /* 5. [핵심] 'More'를 눌러 나오는 상세 설명(<ul>)은 왼쪽 정렬을 유지하도록 명시합니다. */
-            #viewer .description-content {
-                text-align: left;
-            }
-
-            /* 6. 토글 설명 부분의 여백 조정 (변경 없음) */
-            #viewer .caption.is-open .description-content {
-                margin-top: 1.25em;
-            }
-        }
-
-        /* =================================== */
-        /* 섹션 부제목 스타일                  */
-        /* =================================== */
-        .section-title {
-            color: #00966C;
-            font-size: 1.5em;
-            font-weight: bold;
-            text-align: center;
-            margin-top: 0.6em;
-            margin-bottom: 1em;
-            border-bottom: 2px solid #00966C;
-            padding-bottom: 0.1em;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donghyun "Danny" Kang - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="is-preload-0 is-preload-1 is-preload-2">
-
-    <div id="main">
-        <header id="header">
-            <img src="images/fulls/profile_square.jpg" alt="Donghyun Kang" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1em;" />
-            <h1>Donghyun Kang <br>
-            <span style="font-size: 0.7em; color: #00966c; font-weight: 700;">"Danny"</span>
-            </h1>
-            <p class="subtitle">
-                <span class="title">Software Engineer</span><br>
-                <span class="tagline">
-                Driven by curiosity, proven by results.<br>
-                My projects are showcased below.</span>
-            </p>
-
-            <ul class="icons">
-                <li><a href="https://drive.google.com/file/d/1LktIz-0ZJ0IqXkRXI5PDva3LUo8O3aV4/view?usp=sharing" class="icon solid fa-file-alt" target="_blank"><span class="label">Resume</span></a></li>
-                <li><a href="https://linkedin.com/in/kang-dev" class="icon brands fa-linkedin-in" target="_blank"><span class="label">LinkedIn</span></a></li>
-                <li><a href="https://github.com/donghyunkang-digipen" class="icon brands fa-github" target="_blank"><span class="label">Github</span></a></li>
-                <li><a href="mailto:donghyunkang.dev@gmail.com" class="icon fa-envelope"><span class="label">Email</span></a></li>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">Danny Kang</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#academic" class="nav-link">Academic</a></li>
+                <li><a href="#personal" class="nav-link">Personal</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#resume" class="nav-link">Resume</a></li>
             </ul>
-
-            <p>
-                Hello, I'm Donghyun "Danny" Kang! <br><br>
-
-                I am a software engineer pursuing a<br>
-                Bachelor of Science in Computer<br>
-                Science RTIS at the DigiPen Institute<br>
-                of Technology, Redmond WA.<br><br>
-
-                The process may be challenging, but<br>
-                the sense of accomplishment drives <br>
-                me to take another step forward!
-            </p>
-
-        </header>
-
-        <section id="thumbnails">
-
-            <h2 class="section-title">Demo Reel</h2>
-
-            <article data-keywords="demo-reel">
-                <a class="thumbnail" href="images/fulls/01.jpg" data-position="left center"><img src="images/thumbs/01.jpg" alt="Demo Reel" /></a>
-                <h2>Demo Reel <br><span style="font-size: 0.7em; color: #888; font-weight: 400;">Click to watch the video!</span></h2>
-            </article>
-
-            <h2 class="section-title">Projects</h2>
-
-            <article data-keywords="unreal-engine Blueprint Niagara cpp">
-                <a class="thumbnail" href="images/fulls/02.jpg"><img src="images/thumbs/02.jpg" alt="" /></a>
-                <h2>The Children Are Sleeping | Unreal Engine 5, Niagara, Blueprint<br><span style="font-size: 0.7em; color: #888; font-weight: 400;">Led VFX creation and rendering optimization as the team's Graphics Programmer on a 13-member team.</span><span class="toggle-icon"></span></h2>
-                <div class="description-content">
-                    <ul>
-                        <li>Engineered a dynamic post-processing system to visually represent player sanity with vignette and grayscale effects.</li>
-                        <li>Authored key gameplay VFX in Niagara based on artist’s concept art, including item glows and monster threat auras.</li>
-                        <li>Profiled the rendering pipeline with Unreal Insights to identify and resolve performance bottlenecks.</li>
-                        <li>Implemented strategic lighting optimizations, such as using static shadows in Lumen, to boost framerates by over 30 FPS.</li>
-                        <li>Developed the technical art pipeline with parameter-driven materials and VFX documentation to accelerate the team's workflow.</li>
-                    </ul>
-                </div>
-            </article>
-
-            <article data-keywords="cpp OpenGL GLSL">
-                <a class="thumbnail" href="images/fulls/03.jpg" data-position="top center"><img src="images/thumbs/03.jpg" alt="" /></a>
-                <h2>Kingdom of Boardgames | C++, OpenGL, GLSL<br><span style="font-size: 0.7em; color: #888; font-weight: 400;">Implemented a custom shader component and authored shaders in the custom 2D game engine as a Tool Developer.</span><span class="toggle-icon"></span></h2>
-                <div class="description-content">
-                    <ul>
-                        <li>Architected a centralized shader manager using a custom GLShaderArray to load and apply all shaders instantly.</li>
-                        <li>Authored four GLSL shaders that add dynamic fog, rain, lightning, and flowing waters, boosting overall visual immersion.</li>
-                        <li>Enabled shader animations by developing a custom stopwatch component to pass the engine’s delta time to fragment shaders.</li>
-                        <li>Provided an accessible shader pipeline that allowed team members to apply visual effects using a simple Enum for shader type.</li>
-                    </ul>
-                </div>
-            </article>
-
-            <article data-keywords="Unity csharp">
-                <a class="thumbnail" href="images/fulls/04.jpg"><img src="images/thumbs/04.jpg" alt="" /></a>
-                <h2>If I Were the King | Unity, C#<br><span style="font-size: 0.7em; color: #888; font-weight: 400;">Implemented UI from scratch in “If I Were the King”, serving as the dedicated UI/UX programmer, on a 6-member team.</span><span class="toggle-icon"></span></h2>
-                <div class="description-content">
-                    <ul>
-                        <li>Wrote C# scripts and used UGUI to implement a tutorial sequence, settings panels, and HUDs with dynamic resource gauges. </li>
-                        <li>Utilized DOTween library and Unity’s Timeline to make procedural UI animations and narrative cutscenes with visual effects.</li>
-                        <li>Earned a formal certification for successfully completing the program and delivering the final team project over a 3-week sprint.</li>
-                    </ul>
-                </div>
-            </article>
-
-            <article data-keywords="cpp OpenGL SDL2 SFML">
-                <a class="thumbnail" href="images/fulls/05.jpg" data-position="top center"><img src="images/thumbs/05.jpg" alt="" /></a>
-                <h2>Palagang | C++, OpenGL, SDL2, SFML<br><span style="font-size: 0.7em; color: #888; font-weight: 400;">AArchitected a 2D game engine from scratch, as the team’s Engine Programmer and Producer.</span><span class="toggle-icon"></span></h2>
-                <div class="description-content">
-                    <ul>
-                        <li>Integrated foundational libraries for core game engine functions: SDL2 (Window), OpenGL (Graphics), SFML (Audio).</li>
-                        <li>Diagnosed and resolved critical engine-level bugs, caused by dangling pointers and an input processing error.</li>
-                        <li>Engineered a font rendering system that parsed and drew characters from a single sprite sheet.</li>
-                        <li>Developed a trigger system for complex AI state changes and a Verlet-based physics engine with AABB collision detection.</li>
-                    </ul>
-                </div>
-            </article>
-        </section>
-
-        <div id="keyword-filters-wrapper">
-            <div id="keyword-filters"></div>
+            <!-- Mobile menu button -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <footer id="footer">
-            <ul class="copyright">
-                <li>&copy; 2025 Donghyun Kang. All rights reserved.</li>
-                <li>Design: <a href="http://html5up.net">HTML5 UP</a>.<br>Modifications by Donghyun Kang.</li>
+    </nav>
 
-            </ul>
-        </footer>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Hi, I'm <span class="highlight">Donghyun "Danny" Kang</span></h1>
+                <p class="hero-subtitle">Computer Science Student | Developer | Problem Solver</p>
+                <p class="hero-description">
+                    I'm passionate about creating innovative solutions through technology.
+                    I enjoy building projects that solve real-world problems and learning new skills along the way.
+                </p>
+                <a href="#academic" class="btn btn-primary">View My Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Introduction</h3>
+                    <p>
+                        Hello! I'm Donghyun Kang, but I go by Danny. 
+                        I'm a [Your Major] student at [Your University], 
+                        passionate about [Your Interests].
+                    </p>
+                    <p>
+                        I love working on challenging projects that push me to learn new technologies 
+                        and improve my problem-solving skills. My goal is to create meaningful 
+                        applications that make a positive impact.
+                    </p>
+                    
+                    <!-- Skills Section -->
+                    <div class="skills">
+                        <h4>Skills & Technologies</h4>
+                        <div class="skill-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">Git</span>
+                            <!-- Add more skills as needed -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Profile Image (optional) -->
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <!-- Add your image here: <img src="profile.jpg" alt="Danny Kang"> -->
+                        <p>Profile Photo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Projects Section -->
+    <section id="academic" class="projects">
+        <div class="container">
+            <h2 class="section-title">Academic Projects</h2>
+            <div class="projects-grid">
+                
+                <!-- Academic Project 1 -->
+                <div class="project-card" onclick="openModal('academic1')">
+                    <div class="project-image">
+                        <!-- Add project image here -->
+                        <div class="image-placeholder">Project 1</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Academic Project Title 1</h3>
+                        <p>Brief description of your academic project. Click to see more details.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic Project 2 -->
+                <div class="project-card" onclick="openModal('academic2')">
+                    <div class="project-image">
+                        <div class="image-placeholder">Project 2</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Academic Project Title 2</h3>
+                        <p>Brief description of your academic project. Click to see more details.</p>
+                        <div class="project-tags">
+                            <span class="tag">Java</span>
+                            <span class="tag">Data Structures</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more academic projects by copying the project-card block -->
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Projects Section -->
+    <section id="personal" class="projects projects-alt">
+        <div class="container">
+            <h2 class="section-title">Personal Projects</h2>
+            <div class="projects-grid">
+                
+                <!-- Personal Project 1 -->
+                <div class="project-card" onclick="openModal('personal1')">
+                    <div class="project-image">
+                        <div class="image-placeholder">Project 1</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Personal Project Title 1</h3>
+                        <p>Brief description of your personal project. Click to see more details.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Project 2 -->
+                <div class="project-card" onclick="openModal('personal2')">
+                    <div class="project-image">
+                        <div class="image-placeholder">Project 2</div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Personal Project Title 2</h3>
+                        <p>Brief description of your personal project. Click to see more details.</p>
+                        <div class="project-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more personal projects by copying the project-card block -->
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-content">
+                <p class="contact-text">
+                    Feel free to reach out for collaborations, opportunities, or just to say hi!
+                </p>
+                
+                <div class="contact-links">
+                    <a href="mailto:your.email@example.com" class="contact-link">
+                        <span class="icon">✉️</span>
+                        <span>your.email@example.com</span>
+                    </a>
+                    <a href="https://github.com/yourusername" target="_blank" class="contact-link">
+                        <span class="icon">💻</span>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com/in/yourusername" target="_blank" class="contact-link">
+                        <span class="icon">💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="resume">
+        <div class="container">
+            <h2 class="section-title">Resume</h2>
+            <div class="resume-content">
+                <p class="resume-text">
+                    View my resume below or download it for offline viewing.
+                </p>
+                
+                <!-- PDF Preview -->
+                <div class="resume-preview">
+                    <iframe src="resume.pdf" type="application/pdf"></iframe>
+                    <div class="resume-fallback">
+                        <p>📄 Preview not available in your browser</p>
+                        <p class="fallback-text">Please download the PDF to view the resume</p>
+                    </div>
+                </div>
+                
+                <!-- Download Button -->
+                <a href="resume.pdf" class="btn btn-primary" download>
+                    📥 Download Resume (PDF)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Donghyun "Danny" Kang. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Project Details -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="modalBody">
+                <!-- Modal content will be inserted here by JavaScript -->
+            </div>
+        </div>
     </div>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/main.js"></script>
-
+    <!-- JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
 
-            // --- 모든 클릭 이벤트를 한 곳에서 처리 ---
-            document.body.addEventListener('click', function (e) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
 
-                // Case 1: 뷰어(팝업)의 토글 아이콘을 클릭했을 때
-                const toggleIcon = e.target.closest('#viewer .toggle-icon');
-                if (toggleIcon) {
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    // 아이콘의 부모인 .caption을 찾아 'is-open' 클래스를 붙였다 뗐다 함
-                    const caption = e.target.closest('#viewer .caption');
-                    if (caption) {
-                        caption.classList.toggle('is-open');
-                    }
-                    return; // 작업 완료
-                }
-
-                // Case 2: 키워드 필터 버튼을 클릭했을 때
-                if (e.target.classList.contains('filter-trigger')) {
-                    e.preventDefault();
-                    const articles = document.querySelectorAll('#thumbnails article');
-                    const selectedKeyword = e.target.dataset.keyword;
-
-                    document.querySelectorAll('.filter-trigger').forEach(btn => btn.classList.remove('active'));
-                    e.target.classList.add('active');
-
-                    articles.forEach(article => {
-                        if (article.dataset.keywords === 'demo-reel') {
-                            article.classList.remove('hidden');
-                            return; // 다음 article로 넘어갑니다.
-                        }
-
-                        const hasKeyword = article.dataset.keywords && article.dataset.keywords.includes(selectedKeyword);
-                        if (selectedKeyword === 'all' || hasKeyword) {
-                            article.classList.remove('hidden');
-                        } else {
-                            article.classList.add('hidden');
-                        }
-                    });
-                    return; // 작업 완료
-                }
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
             });
+        });
 
-            // --- 페이지 로딩 시 키워드 필터 버튼 생성 (기존과 동일) ---
-            const articles = document.querySelectorAll('#thumbnails article');
-            const filtersContainer = document.getElementById('keyword-filters');
-            if (filtersContainer) {
-                const keywordDisplayMap = { 'cpp': 'C++', 'csharp': 'C#', 'unreal-engine': 'Unreal Engine', 'demo-reel': 'Demo Reel' };
-                let allKeywords = new Set();
-                articles.forEach(article => {
-                    const keywordsString = article.dataset.keywords;
-                    if (keywordsString) {
-                        keywordsString.split(' ').filter(k => k).forEach(keyword => allKeywords.add(keyword));
-                    }
-                });
+        // Add scrolled class to navbar on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
 
-                const allButton = document.createElement('a');
-                allButton.href = '#';
-                allButton.className = 'active filter-trigger';
-                allButton.textContent = 'All';
-                allButton.dataset.keyword = 'all';
-                filtersContainer.appendChild(allButton);
+        // Project details data
+        const projectDetails = {
+            academic1: {
+                title: "Academic Project Title 1",
+                image: "project1.jpg", // Replace with your image
+                description: "Full detailed description of your academic project goes here. Explain what you built, why you built it, and what you learned.",
+                technologies: ["Python", "Machine Learning", "TensorFlow", "NumPy"],
+                features: [
+                    "Feature 1: Description of feature",
+                    "Feature 2: Description of feature",
+                    "Feature 3: Description of feature"
+                ],
+                challenges: "Describe the challenges you faced and how you overcame them.",
+                results: "Explain the results and impact of your project.",
+                links: {
+                    github: "https://github.com/yourusername/project1",
+                    demo: "https://your-demo-link.com"
+                }
+            },
+            academic2: {
+                title: "Academic Project Title 2",
+                image: "project2.jpg",
+                description: "Full detailed description of your second academic project.",
+                technologies: ["Java", "Data Structures", "Algorithms"],
+                features: [
+                    "Feature 1: Description",
+                    "Feature 2: Description"
+                ],
+                challenges: "Challenges faced during development.",
+                results: "Project outcomes and learnings.",
+                links: {
+                    github: "https://github.com/yourusername/project2"
+                }
+            },
+            personal1: {
+                title: "Personal Project Title 1",
+                image: "personal1.jpg",
+                description: "Full detailed description of your personal project.",
+                technologies: ["React", "Node.js", "MongoDB", "Express"],
+                features: [
+                    "Feature 1: Description",
+                    "Feature 2: Description",
+                    "Feature 3: Description"
+                ],
+                challenges: "Challenges and solutions.",
+                results: "Impact and learning outcomes.",
+                links: {
+                    github: "https://github.com/yourusername/personal1",
+                    demo: "https://your-demo-link.com"
+                }
+            },
+            personal2: {
+                title: "Personal Project Title 2",
+                image: "personal2.jpg",
+                description: "Full detailed description of your second personal project.",
+                technologies: ["JavaScript", "API", "HTML/CSS"],
+                features: [
+                    "Feature 1: Description",
+                    "Feature 2: Description"
+                ],
+                challenges: "Technical challenges overcome.",
+                results: "Project achievements.",
+                links: {
+                    github: "https://github.com/yourusername/personal2",
+                    demo: "https://your-demo-link.com"
+                }
+            }
+        };
 
-                Array.from(allKeywords).sort().forEach(keyword => {
-                    const button = document.createElement('a');
-                    button.href = '#';
-                    button.className = 'filter-trigger';
-                    button.textContent = keywordDisplayMap[keyword] || keyword;
-                    button.dataset.keyword = keyword;
-                    filtersContainer.appendChild(button);
-                });
+        // Open modal with project details
+        function openModal(projectId) {
+            const modal = document.getElementById('projectModal');
+            const modalBody = document.getElementById('modalBody');
+            const project = projectDetails[projectId];
+
+            if (!project) return;
+
+            // Build modal content
+            let modalHTML = `
+                <h2>${project.title}</h2>
+                <div class="modal-image">
+                    <div class="image-placeholder">${project.title}</div>
+                    <!-- Uncomment when you have images: <img src="${project.image}" alt="${project.title}"> -->
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Overview</h3>
+                    <p>${project.description}</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Technologies Used</h3>
+                    <div class="project-tags">
+                        ${project.technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Key Features</h3>
+                    <ul>
+                        ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Challenges & Solutions</h3>
+                    <p>${project.challenges}</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Results & Impact</h3>
+                    <p>${project.results}</p>
+                </div>
+
+                <div class="modal-section modal-links">
+                    ${project.links.github ? `<a href="${project.links.github}" target="_blank" class="btn btn-secondary">View on GitHub</a>` : ''}
+                    ${project.links.demo ? `<a href="${project.links.demo}" target="_blank" class="btn btn-secondary">Live Demo</a>` : ''}
+                </div>
+            `;
+
+            modalBody.innerHTML = modalHTML;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
             }
         });
     </script>
