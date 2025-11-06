@@ -33,15 +33,51 @@ Open `index.html` and search for these sections:
 </p>
 ```
 
-### 3. Update Your Skills
-**Line ~65:** Add your actual skills
+### 3. Add Your Education
+**Line ~67:** Update your education information
+```html
+<div class="education-item">
+    <div class="education-header">
+        <h5>Your University Name</h5>
+        <span class="education-date">Expected Graduation: May 2026</span>
+    </div>
+    <p class="education-degree">Bachelor of Science in Computer Science</p>
+    <p class="education-details">GPA: 3.8/4.0 | Relevant Coursework: Data Structures, Algorithms, Machine Learning</p>
+</div>
+```
+
+**To add more schools** (e.g., high school, study abroad):
+Just copy the entire `education-item` div and change the information.
+
+### 4. Update Your Experience
+**Line ~82:** Update SIGGRAPH volunteer experience or add your own
+```html
+<div class="experience-item">
+    <div class="experience-header">
+        <h5>Student Volunteer</h5>
+        <span class="experience-date">July 2025</span>
+    </div>
+    <p class="experience-company">SIGGRAPH 2025</p>
+    <ul class="experience-details">
+        <li>Your specific responsibility or achievement</li>
+        <li>Another responsibility or achievement</li>
+        <li>What you learned or accomplished</li>
+    </ul>
+</div>
+```
+
+**To add more experiences:**
+Copy the entire `experience-item` div and paste it below the existing one.
+
+### 5. Update Your Skills
+**Line ~105:** Add your actual skills
 ```html
 <span class="tag">Python</span>
 <span class="tag">Java</span>
 <!-- Add your skills here -->
 ```
 
-### 4. Update Contact Info
+### 6. Update Contact Info
 **Line ~188:** Update your email and links
 ```html
 <a href="mailto:your.email@example.com" class="contact-link">
