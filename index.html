@@ -10,195 +10,17 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
-// 폭죽 효과 스크립트
+// DOM이 로드될 때까지 기다리기
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Script loaded!');
     
-    const isMobile = window.innerWidth < 768;
-    console.log('Is mobile:', isMobile);
-
-    if (!isMobile) {
-        // 데스크탑: WebGL - 폭죽 효과 🎆
-        console.log('Loading WebGL with Fireworks...');
-        
-        const heroSection = document.querySelector('.hero');
-        if (!heroSection) {
-            console.error('Hero section not found!');
-            return;
-        }
-        
-        const canvas = document.createElement('canvas');
-        canvas.id = 'webgl-canvas';
-        canvas.style.position = 'absolute';
-        canvas.style.top = '0';
-        canvas.style.left = '0';
-        canvas.style.width = '100%';
-        canvas.style.height = '100%';
-        canvas.style.zIndex = '0';
-        heroSection.insertBefore(canvas, heroSection.firstChild);
-
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-        camera.position.z = 5;
-
-        // 폭죽 시스템
-        const fireworks = [];
-        const colors = [0xfbbf24, 0xff6b6b, 0x4ecdc4, 0x95e1d3, 0xf38181, 0xaa96da];
-        
-        class Firework {
-            constructor() {
-                this.reset();
-            }
-            
-            reset() {
-                // 랜덤 시작 위치
-                this.startX = (Math.random() - 0.5) * 8;
-                this.startY = -4;
-                this.targetY = (Math.random() - 0.2) * 4;
-                
-                // 올라가는 로켓
-                const rocketGeometry = new THREE.BufferGeometry();
-                const rocketPos = new Float32Array(3);
-                rocketPos[0] = this.startX;
-                rocketPos[1] = this.startY;
-                rocketPos[2] = 0;
-                rocketGeometry.setAttribute('position', new THREE.BufferAttribute(rocketPos, 3));
-                
-                const rocketMaterial = new THREE.PointsMaterial({
-                    size: 0.1,
-                    color: 0xfbbf24,
-                    transparent: true,
-                    opacity: 1,
-                    blending: THREE.AdditiveBlending
-                });
-                
-                this.rocket = new THREE.Points(rocketGeometry, rocketMaterial);
-                this.rocket.userData.velocity = 0.05;
-                scene.add(this.rocket);
-                
-                this.exploded = false;
-                this.particles = null;
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-            }
-            
-            update() {
-                if (!this.exploded) {
-                    // 로켓 올라가기
-                    this.rocket.position.y += this.rocket.userData.velocity;
-                    
-                    if (this.rocket.position.y >= this.targetY) {
-                        this.explode();
-                    }
-                } else if (this.particles) {
-                    // 파티클 업데이트
-                    const positions = this.particles.geometry.attributes.position.array;
-                    const velocities = this.particles.userData.velocities;
-                    
-                    for (let i = 0; i < positions.length; i += 3) {
-                        positions[i] += velocities[i];
-                        positions[i + 1] += velocities[i + 1];
-                        positions[i + 2] += velocities[i + 2];
-                        
-                        // 중력 효과
-                        velocities[i + 1] -= 0.001;
-                    }
-                    
-                    this.particles.geometry.attributes.position.needsUpdate = true;
-                    this.particles.material.opacity -= 0.01;
-                    
-                    if (this.particles.material.opacity <= 0) {
-                        scene.remove(this.particles);
-                        scene.remove(this.rocket);
-                        this.reset();
-                    }
-                }
-            }
-            
-            explode() {
-                this.exploded = true;
-                scene.remove(this.rocket);
-                
-                // 폭발 파티클 생성
-                const particleCount = 100;
-                const particlesGeometry = new THREE.BufferGeometry();
-                const positions = new Float32Array(particleCount * 3);
-                const velocities = new Float32Array(particleCount * 3);
-                
-                for (let i = 0; i < particleCount; i++) {
-                    const i3 = i * 3;
-                    // 시작 위치
-                    positions[i3] = this.startX;
-                    positions[i3 + 1] = this.targetY;
-                    positions[i3 + 2] = 0;
-                    
-                    // 랜덤 방향으로 속도
-                    const theta = Math.random() * Math.PI * 2;
-                    const phi = Math.random() * Math.PI;
-                    const speed = 0.02 + Math.random() * 0.03;
-                    
-                    velocities[i3] = Math.sin(phi) * Math.cos(theta) * speed;
-                    velocities[i3 + 1] = Math.cos(phi) * speed;
-                    velocities[i3 + 2] = Math.sin(phi) * Math.sin(theta) * speed;
-                }
-                
-                particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-                
-                const particlesMaterial = new THREE.PointsMaterial({
-                    size: 0.05,
-                    color: this.color,
-                    transparent: true,
-                    opacity: 1,
-                    blending: THREE.AdditiveBlending
-                });
-                
-                this.particles = new THREE.Points(particlesGeometry, particlesMaterial);
-                this.particles.userData.velocities = velocities;
-                scene.add(this.particles);
-            }
-        }
-        
-        // 여러 개의 폭죽 생성
-        for (let i = 0; i < 5; i++) {
-            setTimeout(() => {
-                fireworks.push(new Firework());
-            }, i * 800);
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            
-            // 모든 폭죽 업데이트
-            fireworks.forEach(fw => fw.update());
-            
-            renderer.render(scene, camera);
-        }
-
-        animate();
-        console.log('WebGL Fireworks started! 🎆');
-
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 768) {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            }
-        });
-        
-    } else {
-        // 모바일: CSS 애니메이션
-        console.log('Loading CSS animation...');
-        const heroSection = document.querySelector('.hero');
-        if (heroSection) {
-            heroSection.classList.add('hero-mobile-animation');
-            console.log('CSS animation added!');
-        }
+    // 간단한 CSS 폭죽 애니메이션 적용
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        heroSection.classList.add('hero-fireworks');
+        console.log('CSS fireworks animation added!');
     }
 });
-
 </script>
 <body>
     <!-- Navigation Bar -->
@@ -208,8 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#academic" class="nav-link">Academic</a></li>
-                <li><a href="#personal" class="nav-link">Personal</a></li>
+                <li><a href="#academic" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
                 <li><a href="#resume" class="nav-link">Resume</a></li>
             </ul>
@@ -329,10 +150,10 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </section>
 
-    <!-- Academic Projects Section -->
+    <!-- Student Projects Section -->
     <section id="academic" class="projects">
         <div class="container">
-            <h2 class="section-title">Academic Projects</h2>
+            <h2 class="section-title">Student Projects</h2>
             <div class="projects-grid">
                 
                 <!-- Academic Project 1 -->
@@ -495,23 +316,22 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.toggle('active');
         });
 
+
         // Close menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
+        document.querySelectorAll('.nav-link, .dropdown-link').forEach(link => {
             link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+                // 드롭다운 토글이 아닌 경우에만 메뉴 닫기
+                if (!link.classList.contains('dropdown-toggle')) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    if (navDropdown) {
+                        navDropdown.classList.remove('active');
+                    }
+                }
             });
         });
 
         // Add scrolled class to navbar on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
 
         // Project details data
         const projectDetails = {
@@ -528,8 +348,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 challenges: "Describe the challenges you faced and how you overcame them.",
                 results: "Explain the results and impact of your project.",
                 links: {
-                    github: "https://github.com/yourusername/project1",
-                    demo: "https://your-demo-link.com"
+                    github: "",
+                    demo: ""
                 }
             },
             academic2: {
@@ -544,7 +364,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 challenges: "Challenges faced during development.",
                 results: "Project outcomes and learnings.",
                 links: {
-                    github: "https://github.com/yourusername/project2"
+                    github: "",
+                    demo: ""
                 }
             },
             personal1: {
@@ -560,8 +381,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 challenges: "Challenges and solutions.",
                 results: "Impact and learning outcomes.",
                 links: {
-                    github: "https://github.com/yourusername/personal1",
-                    demo: "https://your-demo-link.com"
+                    github: "",
+                    demo: ""
                 }
             },
             personal2: {
@@ -576,8 +397,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 challenges: "Technical challenges overcome.",
                 results: "Project achievements.",
                 links: {
-                    github: "https://github.com/yourusername/personal2",
-                    demo: "https://your-demo-link.com"
+                    github: "",
+                    demo: ""
                 }
             }
         };
@@ -628,8 +449,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
 
                 <div class="modal-section modal-links">
-                    ${project.links.github ? `<a href="${project.links.github}" target="_blank" class="btn btn-secondary">View on GitHub</a>` : ''}
-                    ${project.links.demo ? `<a href="${project.links.demo}" target="_blank" class="btn btn-secondary">Live Demo</a>` : ''}
+                    ${project.links.github ? 
+                        `<a href="${project.links.github}" target="_blank" class="btn btn-secondary">View on GitHub</a>` : 
+                        `<button onclick="showComingSoon('GitHub')" class="btn btn-secondary btn-disabled">View on GitHub</button>`
+                    }
+                    ${project.links.demo ? 
+                        `<a href="${project.links.demo}" target="_blank" class="btn btn-secondary">Live Demo</a>` : 
+                        `<button onclick="showComingSoon('Live Demo')" class="btn btn-secondary btn-disabled">Live Demo</button>`
+                    }
                 </div>
             `;
 
@@ -643,6 +470,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('projectModal');
             modal.style.display = 'none';
             document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Show coming soon alert
+        function showComingSoon(type) {
+            alert(`${type} is not available yet. This feature is coming soon!`);
         }
 
         // Close modal when clicking outside
