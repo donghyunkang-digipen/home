@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donghyun Kang - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: Letter;
+            margin: 0.35in 0.5in;
+        }
+        
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            font-size: 9pt;
+            line-height: 1.25;
+            color: #000;
+        }
+        
+        .container {
+            max-width: 100%;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 6px;
+        }
+        
+        .header h1 {
+            font-size: 14pt;
+            font-weight: bold;
+            margin-bottom: 1px;
+        }
+        
+        .header .title {
+            font-size: 10pt;
+            font-weight: normal;
+            margin-bottom: 2px;
+        }
+        
+        .header .contact {
+            font-size: 8pt;
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 8px;
+        }
+        
+        .section-title {
+            font-size: 9pt;
+            font-weight: bold;
+            border-bottom: 1px solid #000;
+            margin-bottom: 6px;
+            padding-bottom: 1px;
+        }
+        
+        /* Education */
+        .education-item {
+            margin-bottom: 4px;
+        }
+        
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0px;
+        }
+        
+        .institution {
+            font-weight: bold;
+        }
+        
+        .date {
+            font-weight: normal;
+        }
+        
+        .degree {
+            font-style: italic;
+            margin-bottom: 0px;
+        }
+        
+        .details {
+            margin-left: 8px;
+        }
+        
+        .details li {
+            margin-bottom: 0px;
+        }
+        
+        /* Experience */
+        .experience-item {
+            margin-bottom: 4px;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0px;
+        }
+        
+        .job-title {
+            font-weight: bold;
+        }
+        
+        .organization {
+            font-weight: bold;
+        }
+        
+        .tech-stack {
+            font-weight: bold;
+            margin-bottom: 0px;
+        }
+        
+        /* Projects */
+        .project-item {
+            margin-bottom: 4px;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0px;
+        }
+        
+        .project-role {
+            font-weight: bold;
+        }
+
+        .project-name {
+            font-weight: bold;
+        }
+        
+        /* Skills */
+        .skills-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .skills-table td {
+            padding: 0px 4px;
+            vertical-align: top;
+        }
+        
+        .skills-table td:first-child {
+            font-weight: bold;
+            width: 25%;
+        }
+        
+        /* Achievements list */
+        .achievements {
+            margin-left: 8px;
+        }
+        
+        .achievements li {
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <h1>Donghyun Kang</h1>
+            <div class="title">Graphics Programmer</div>
+            <div class="contact">donghyun.kang.dev@gmail.com | https://linkedin.com/in/kang-dev | https://kangmakes.com</div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Education</div>
+
+            <div class="education-item">
+                <div class="education-header">
+                    <span class="institution">DigiPen Institute of Technology / Redmond, WA</span>
+                    <span class="date">Expected Apr 2026</span>
+                </div>
+                <div class="degree">Bachelor of Science in Computer Science in Real-Time Interactive Simulation</div>
+                <ul class="details">
+                    <li>Minor: Mathematics</li>
+                    <li>Relevant Courses: Advanced Computer Graphics I, Advanced C/C++, Linear Algebra and Geometry, Curves and Surfaces</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Technical Skills:</div>
+            <table class="skills-table">
+
+                <tr>
+                    <td>Languages:</td>
+                    <td>C, C++, C#, Blueprint, GLSL</td>
+                </tr>
+
+                <tr>
+                    <td>API & Libraries:</td>
+                    <td>OpenGL, SDL2, SFML</td>
+                </tr>
+
+                <tr>
+                    <td>Engines:</td>
+                    <td>Unreal Engine 5, Unity, Custom 2D Engine</td>
+                </tr>
+
+                <tr>
+                    <td>Tools:</td>
+                    <td>Git, GitHub, Perforce, CMake, Niagara, Unity Timeline, DOTween, Maya, Substance Painter</td>
+                </tr>
+
+                <tr>
+                    <td>OS:</td>
+                    <td>Windows, Linux</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Experience</div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <span class="job-title">Student Volunteer</span>
+                    </div>
+                    <span class="date">Aug 2025</span>
+                </div>
+                <div class="organization">ACM SIGGRAPH 2025 / Vancouver, BC</div>
+                <ul class="achievements">
+                    <li>Volunteered at SIGGRAPH 2025 as exhibition guide and door monitor.</li>
+                    <li>Experienced emerging computer graphics technologies and industry developments.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <span class="job-title">The Winter School Program in Video Game Development</span>
+                    </div>
+                    <span class="date">Jan 2024</span>
+                </div>
+                <div class="organization">EPITECH - European Institute of Technology / Paris, France</div>
+                <div class="tech-stack">Unity, C#</div>
+                <ul class="achievements">
+                    <li>Implemented UI from scratch in "If I Were the King", serving as the dedicated UI/UX programmer, on a 6-member team.</li>
+                    <li>Wrote C# scripts and used UGUI to implement a tutorial sequence, settings panels, and HUDs with dynamic resource gauges.</li>
+                    <li>Utilized DOTween library and Unity's Timeline to make procedural UI animations and narrative cutscenes with visual effects.</li>
+                    <li>Earned a formal certification for successfully completing the program and delivering the final team project over a 3-week sprint.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Team Based Projects:</div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div>
+                        <span class="project-role">Graphics Programmer</span>
+                    </div>
+                    <span class="date">Fall 2024 – Spring 2025</span>
+                </div>
+                <div class="project-name">The Children Are Sleeping | Unreal Engine 5, Niagara, Blueprint</div>
+                <ul class="achievements">
+                    <li>Engineered a dynamic post-processing system to visually represent player sanity with vignette and grayscale effects.</li>
+                    <li>Authored key gameplay VFX in Niagara based on artist's concept art, including item glows and monster threat auras.</li>
+                    <li>Profiled the rendering pipeline with Unreal Insights to identify and resolve performance bottlenecks.</li>
+                    <li>Implemented strategic lighting optimizations, such as using static shadows in Lumen, to boost framerates by over 30 FPS.</li>
+                    <li>Developed the technical art pipeline with parameter-driven materials and VFX documentation to accelerate the team's workflow.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div>
+                        <span class="project-role">Tool Developer</span>
+                    </div>
+                    <span class="date">Spring 2024</span>
+                </div>
+                <div class="project-name">Kingdom of Boardgames | C++, OpenGL, GLSL</div>
+                <ul class="achievements">
+                    <li>Architected a centralized shader manager using a custom GLShaderArray to load and apply all shaders instantly.</li>
+                    <li>Authored four GLSL shaders that add dynamic fog, rain, lightning, and flowing waters, boosting overall visual immersion.</li>
+                    <li>Enabled shader animations by developing a custom stopwatch component to pass the engine's delta time to fragment shaders.</li>
+                    <li>Provided an accessible shader pipeline that allowed team members to apply visual effects using a simple Enum for shader type.</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="project-header">
+                    <div>
+                        <span class="project-role">Engine Programmer</span>
+                    </div>
+                    <span class="date">Fall 2023</span>
+                </div>
+                <div class="project-name">Palagang | C++, OpenGL, SDL2, SFML</div>
+                <ul class="achievements">
+                    <li>Integrated foundational libraries for core game engine functions: SDL2 (Window), OpenGL (Graphics), SFML (Audio).</li>
+                    <li>Diagnosed and resolved critical engine-level bugs, caused by dangling pointers and an input processing error.</li>
+                    <li>Engineered a font rendering system that parsed and drew characters from a single sprite sheet.</li>
+                    <li>Developed a trigger system for complex AI state changes and a Verlet-based physics engine with AABB collision detection.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

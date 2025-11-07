@@ -160,15 +160,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="project-card" onclick="openModal('academic1')">
                     <div class="project-image">
                         <!-- Add project image here -->
-                        <div class="image-placeholder">Project 1</div>
+                        <img src="assets/images/spooky-runner-screenshot.jpg" alt="Spooky Runner Game">
                     </div>
                     <div class="project-info">
-                        <h3>Academic Project Title 1</h3>
-                        <p>Brief description of your academic project. Click to see more details.</p>
+                        <h3>Spooky Runner - Live Service Game</h3>
+                        <p class="project-date">September 2025 - Present</p>
+                        <p>Developed full-stack system for GAM400 live service project. Built Unity client-side score calculation and Node.js backend with real-time leaderboard on Oracle Cloud.</p>
                         <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Machine Learning</span>
-                        </div>
+                            <span class="tag">Unity</span>
+                            <span class="tag">C#</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MySQL</span>
+                        </div>      
                     </div>
                 </div>
 
@@ -271,17 +274,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     View my resume below or download it for offline viewing.
                 </p>
                 
-                <!-- PDF Preview -->
-                <div class="resume-preview">
-                    <iframe src="resume.pdf" type="application/pdf"></iframe>
+                <!-- PDF Preview (Desktop/Tablet) -->
+                <div class="resume-preview resume-pdf-view">
+                    <iframe src="assets/resume.pdf" type="application/pdf"></iframe>
                     <div class="resume-fallback">
                         <p>📄 Preview not available in your browser</p>
                         <p class="fallback-text">Please download the PDF to view the resume</p>
                     </div>
                 </div>
+
+                <!-- HTML Resume (Mobile) - Loaded dynamically from assets/resume.html -->
+                <div class="resume-html-view">
+                    <div class="resume-html-content">
+                        <!-- Resume content will be loaded here by JavaScript -->
+                    </div>
+                </div>
                 
                 <!-- Download Button -->
-                <a href="resume.pdf" class="btn btn-primary" download>
+                <a href="assets/resume.pdf" class="btn btn-primary" download>
                     📥 Download Resume (PDF)
                 </a>
             </div>
@@ -307,6 +317,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <!-- JavaScript -->
     <script>
+        // Load resume.html content for mobile view
+        function loadResumeHTML() {
+            const container = document.querySelector('.resume-html-content');
+            
+            // Show loading message
+            container.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666;">Loading resume...</p>';
+            
+            fetch('assets/resume.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    // Parse the HTML and extract the body content
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const resumeContent = doc.querySelector('.container');
+                    
+                    if (resumeContent) {
+                        container.innerHTML = resumeContent.innerHTML;
+                        console.log('Resume loaded successfully');
+                    } else {
+                        throw new Error('Could not find resume content');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading resume:', error);
+                    container.innerHTML = 
+                        '<p style="text-align: center; padding: 2rem; color: #666;">Unable to load resume content.<br>Please download the PDF version below.</p>';
+                });
+        }
+
+        // Load resume on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadResumeHTML();
+        });
+
         // Mobile menu toggle
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
@@ -336,19 +385,21 @@ document.addEventListener('DOMContentLoaded', function() {
         // Project details data
         const projectDetails = {
             academic1: {
-                title: "Academic Project Title 1",
-                image: "project1.jpg", // Replace with your image
-                description: "Full detailed description of your academic project goes here. Explain what you built, why you built it, and what you learned.",
-                technologies: ["Python", "Machine Learning", "TensorFlow", "NumPy"],
+                title: "Spooky Runner - Live Service Game",
+                duration: "September 2025 - Present",
+                image: "assets/images/spooky-runner-screenshot.jpg",
+                description: "Full-stack backend system for 'Spooky Runner,' a live service game developed in Unity as part of GAM400. As the server developer for team 'The Respawn Bureau,' I implemented client-side score calculation in Unity (C#), built a Node.js backend with real-time leaderboard system, and created a designer-friendly CSV-based game balance system. Migrated from local XAMPP to Oracle Cloud for 24/7 availability.",
+                technologies: ["Unity", "C#", "Node.js", "MySQL", "Oracle Cloud", "XAMPP", "CSV Parsing"],
                 features: [
-                    "Feature 1: Description of feature",
-                    "Feature 2: Description of feature",
-                    "Feature 3: Description of feature"
+                    "Client-Side Score System: Implemented score calculation logic in Unity using C#, processing player actions and game events in real-time",
+                    "Real-time Leaderboard System: Built Node.js backend to receive score data from Unity clients and maintain live rankings with MySQL database",
+                    "CSV-based Balance System: Created parsing system allowing designers to adjust in-game upgrade values by simply modifying CSV files, integrated with Unity's resource loading",
+                    "Admin Dashboard: Developed web-based administrative interface for record deletion and monitoring player activity metrics"
                 ],
-                challenges: "Describe the challenges you faced and how you overcame them.",
-                results: "Explain the results and impact of your project.",
+                challenges: "Initially deployed using a local XAMPP server, but discovered availability issues when the host PC was offline. After evaluating various cloud hosting solutions, migrated to Oracle Cloud's free tier to ensure continuous service. Implemented score validation on both client and server sides to prevent cheating. Applied database design principles and SQL query optimization from CS211 (Intro to Database) to handle concurrent player requests efficiently.",
+                results: "Successfully established a stable 24/7 server environment enabling seamless multiplayer experience. The CSV-based system significantly accelerated iteration speed, allowing designers to independently balance gameplay without programmer intervention. Handled multiple concurrent players with optimized database queries, maintaining responsive performance for score submissions. The admin dashboard provided essential tools for monitoring player engagement and maintaining data integrity throughout the live service period.",
                 links: {
-                    github: "",
+                    github: "https://github.com/MinerSheep/TheRespawnBureau",
                     demo: ""
                 }
             },
@@ -414,6 +465,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Build modal content
             let modalHTML = `
                 <h2>${project.title}</h2>
+                ${project.duration ? `<p class="modal-duration">${project.duration}</p>` : ''}
                 <div class="modal-image">
                     <div class="image-placeholder">${project.title}</div>
                     <!-- Uncomment when you have images: <img src="${project.image}" alt="${project.title}"> -->
