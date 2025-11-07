@@ -115,6 +115,28 @@ document.addEventListener('DOMContentLoaded', function() {
         const heroSection = document.querySelector('.hero');
         if (heroSection) {
             heroSection.classList.add('hero-mobile-animation');
+            // 모바일 전용: 경량 폭죽 레이어 생성
+const fx = document.createElement('div');
+fx.className = 'fireworks';
+heroSection.appendChild(fx);
+
+// 몇 개의 발사체를 주기적으로 생성
+const spawnFirework = () => {
+    const f = document.createElement('div');
+    f.className = 'firework';
+    // 폭죽 수평 랜덤 오프셋
+    const tx = (Math.random() * 60 - 30) + 'vw';
+    f.style.left = (Math.random() * 70 + 15) + 'vw';
+    f.style.setProperty('--tx', tx);
+    fx.appendChild(f);
+    // 애니메이션 종료 후 제거
+    setTimeout(() => f.remove(), 2400);
+};
+
+// 주기적 스폰 (모바일은 “조금 더 쎄게” → 간격 짧게)
+let fwTimer = setInterval(spawnFirework, 500);
+// 메모리/전환 안전장치
+window.addEventListener('beforeunload', () => clearInterval(fwTimer));
             console.log('CSS animation added!'); // 디버깅용
         }
     }
