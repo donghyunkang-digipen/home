@@ -1,366 +1,233 @@
-# Portfolio Website - Donghyun "Danny" Kang
+# 🎨 Donghyun "Danny" Kang - Portfolio Website
 
-A clean and modern portfolio website template with interactive project modals.
-Built with HTML, CSS, and JavaScript. Easy to deploy on GitHub Pages.
+A modern, responsive portfolio website showcasing my academic and personal projects, skills, and experience as a Computer Science student specializing in Real-Time Interactive Simulation.
 
-## 🌟 Features
+![Portfolio Preview](https://img.shields.io/badge/Status-Live-success)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 
-- ✅ Fully Responsive Design (Mobile, Tablet, Desktop)
-- ✅ Clean and Modern UI
-- ✅ Interactive Project Modals (Click to view details)
-- ✅ 6 Main Sections: Home, About (with Education & Experience), Academic Projects, Personal Projects, Contact, Resume
-- ✅ PDF Resume Preview with Download
-- ✅ Education Timeline
-- ✅ Experience/Volunteer Section
-- ✅ Easy to Customize
-- ✅ GitHub Pages Ready
-- ✅ Beginner-Friendly Code
+---
 
-## 📁 File Structure
+## 🎆 Features
+
+### Visual Effects
+- **🎇 Animated Fireworks Background**: Beautiful CSS-based fireworks animation on the hero section
+- **🌊 Smooth Scrolling**: Seamless navigation between sections
+- **💫 Neumorphic Design**: Modern neumorphism-style mobile navigation menu
+- **🎨 Responsive Design**: Optimized for desktop, tablet, and mobile devices
+
+### Navigation
+- **Fixed Navigation Bar**: Easy access to all sections
+- **Hamburger Menu**: Slide-in mobile menu from the right
+- **Smooth Transitions**: All navigation elements have smooth animations
+
+### Content Sections
+- **Hero Section**: Eye-catching introduction with animated background
+- **About Me**: Professional introduction with photo, education, experience, and skills
+- **Student Projects**: Academic projects with detailed modal views
+- **Personal Projects**: Personal work showcasing various technologies
+- **Contact**: Direct links to email, GitHub, and LinkedIn
+- **Resume**: Embedded PDF viewer with download option
+
+### Interactive Elements
+- **Project Modals**: Detailed project information in elegant popup modals
+- **Coming Soon Alerts**: User-friendly notifications for projects under development
+- **Hover Effects**: Subtle animations on buttons and cards
+- **Active States**: Visual feedback for all interactive elements
+
+---
+
+## 🛠️ Technologies Used
+
+- **HTML5**: Semantic markup structure
+- **CSS3**: 
+  - Custom CSS variables for easy theming
+  - Flexbox & Grid for layouts
+  - CSS animations and transitions
+  - Neumorphism design effects
+  - Media queries for responsive design
+- **JavaScript**: 
+  - Vanilla JS for interactions
+  - Dynamic modal content generation
+  - Event handling for navigation and modals
+  - Coming soon feature alerts
+
+---
+
+## 📁 Project Structure
 
 ```
 portfolio/
+│
 ├── index.html          # Main HTML file
-├── style.css          # CSS styles
-└── README.md          # Documentation (this file)
+├── style.css           # All styling and animations
+├── README.md           # Project documentation
+│
+├── assets/             # (Optional) Images and resources
+│   ├── images/
+│   └── resume.pdf
+│
+└── screenshots/        # (Optional) Portfolio screenshots
 ```
 
-## 🚀 Deploy to GitHub Pages
+---
 
-### 1. Create GitHub Repository
-1. Log in to GitHub
-2. Create a new repository
-3. Name it `username.github.io` (replace username with your GitHub username)
+## 🚀 Getting Started
 
-### 2. Upload Files
-1. Upload `index.html` and `style.css` to the repository
-2. Commit and push
+### Prerequisites
+- A modern web browser (Chrome, Firefox, Safari, Edge)
+- (Optional) A local web server for testing
 
-### 3. Configure Settings
-1. Go to repository Settings
-2. Click "Pages" in the left menu
-3. Set Source to "main" branch
-4. Click Save
+### Installation
 
-### 4. Done!
-- Your site will be live at `https://username.github.io` in a few minutes
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/donghyunkang-digipen/portfolio.git
+   cd portfolio
+   ```
 
-## ✏️ Customization Guide
+2. **Open the website**
+   - Simply open `index.html` in your web browser
+   - Or use a local server:
+     ```bash
+     # Using Python
+     python -m http.server 8000
+     
+     # Using Node.js
+     npx http-server
+     ```
 
-### Update Basic Information
+3. **View in browser**
+   - Navigate to `http://localhost:8000`
 
-#### 1. Personal Information
-Edit `index.html` and update:
+---
 
-```html
-<!-- Navigation logo -->
-<a href="#home" class="logo">Danny Kang</a>
+## 🎨 Customization
 
-<!-- Hero section -->
-<h1 class="hero-title">Hi, I'm <span class="highlight">Donghyun "Danny" Kang</span></h1>
-<p class="hero-subtitle">Computer Science Student | Developer | Problem Solver</p>
+### Colors
+Edit the CSS variables in `style.css`:
+```css
+:root {
+    --primary-color: #000000;      /* Primary color */
+    --secondary-color: #0aa03c;    /* Secondary color */
+    --text-color: #000000;         /* Text color */
+    --bg-color: #ffffff;           /* Background color */
+}
 ```
 
-#### 2. About Section
-Update your introduction in the About section:
-
-```html
-<div class="about-text">
-    <h3>Introduction</h3>
-    <p>
-        Write your introduction here.
-        Include your university, major, and interests.
-    </p>
-</div>
-```
-
-**Add Education:**
-```html
-<div class="education-item">
-    <div class="education-header">
-        <h5>Your University Name</h5>
-        <span class="education-date">Expected Graduation: May 2026</span>
-    </div>
-    <p class="education-degree">Bachelor of Science in Computer Science</p>
-    <p class="education-details">GPA: 3.8/4.0 | Relevant Coursework: Data Structures, Algorithms, Machine Learning</p>
-</div>
-```
-
-**Add Experience/Volunteer Work:**
-```html
-<div class="experience-item">
-    <div class="experience-header">
-        <h5>Student Volunteer</h5>
-        <span class="experience-date">July 2025</span>
-    </div>
-    <p class="experience-company">SIGGRAPH 2025</p>
-    <ul class="experience-details">
-        <li>Assisted with conference operations and attendee support</li>
-        <li>Collaborated with international team members</li>
-        <li>Gained exposure to cutting-edge computer graphics research</li>
-    </ul>
-</div>
-```
-
-To add more education or experience entries, simply copy the entire `education-item` or `experience-item` div.
-
-#### 3. Skills
-Add or remove skill tags:
-
-```html
-<div class="skill-tags">
-    <span class="tag">Python</span>
-    <span class="tag">Java</span>
-    <!-- Add more skills -->
-</div>
-```
-
-#### 4. Adding Projects
-
-**Step 1: Add Project Card**
-In the HTML, add a new project card:
-
-```html
-<div class="project-card" onclick="openModal('projectId')">
-    <div class="project-image">
-        <div class="image-placeholder">Project Name</div>
-        <!-- Or use image: <img src="project.jpg" alt="Project"> -->
-    </div>
-    <div class="project-info">
-        <h3>Project Title</h3>
-        <p>Brief description</p>
-        <div class="project-tags">
-            <span class="tag">Tech1</span>
-            <span class="tag">Tech2</span>
-        </div>
-    </div>
-</div>
-```
-
-**Step 2: Add Project Details**
-In the JavaScript section, add project details to the `projectDetails` object:
-
+### Adding Projects
+Edit the `projectDetails` object in `index.html`:
 ```javascript
 const projectDetails = {
-    projectId: {
+    yourProject: {
         title: "Your Project Title",
-        image: "project.jpg",
-        description: "Full detailed description of your project.",
-        technologies: ["Python", "Flask", "MongoDB"],
-        features: [
-            "Feature 1: Description",
-            "Feature 2: Description",
-            "Feature 3: Description"
-        ],
-        challenges: "Describe challenges you faced.",
-        results: "Explain the results and impact.",
+        description: "Project description...",
+        technologies: ["Tech1", "Tech2"],
+        features: ["Feature 1", "Feature 2"],
+        challenges: "Challenges you faced...",
+        results: "Project outcomes...",
         links: {
-            github: "https://github.com/yourusername/project",
-            demo: "https://your-demo-link.com"  // Optional
+            github: "https://github.com/username/repo",
+            demo: "https://your-demo-link.com"
         }
     }
 };
 ```
 
-#### 5. Contact Information
-Update your contact links:
-
+### Resume
+Replace `resume.pdf` in the iframe src:
 ```html
-<a href="mailto:your.email@example.com" class="contact-link">
-    <span class="icon">✉️</span>
-    <span>your.email@example.com</span>
-</a>
+<iframe src="your-resume.pdf" type="application/pdf"></iframe>
 ```
-
-#### 6. Resume
-Add your resume PDF file to the repository and it will automatically show a preview:
-
-```html
-<!-- The filename must match exactly -->
-<iframe src="resume.pdf" type="application/pdf"></iframe>
-<a href="resume.pdf" class="btn btn-primary" download>
-    📥 Download Resume (PDF)
-</a>
-```
-
-**Note:** Desktop users will see a PDF preview. Mobile users will see a download message (this is normal behavior for mobile browsers).
-
-### Change Colors
-
-Edit colors in `style.css` at the top:
-
-```css
-:root {
-    --primary-color: #2563eb;      /* Primary color */
-    --secondary-color: #1e40af;    /* Secondary color */
-    /* ... */
-}
-```
-
-#### Color Scheme Suggestions:
-
-**1. Blue Theme (Default)**
-```css
---primary-color: #2563eb;
---secondary-color: #1e40af;
-```
-
-**2. Purple Theme**
-```css
---primary-color: #7c3aed;
---secondary-color: #5b21b6;
-```
-
-**3. Green Theme**
-```css
---primary-color: #059669;
---secondary-color: #047857;
-```
-
-**4. Orange Theme**
-```css
---primary-color: #ea580c;
---secondary-color: #c2410c;
-```
-
-### Adding Images
-
-#### Profile Image
-1. Upload image file to repository
-2. Update in `index.html`:
-
-```html
-<div class="about-image">
-    <div class="image-placeholder">
-        <img src="profile.jpg" alt="Danny Kang">
-    </div>
-</div>
-```
-
-#### Project Images
-```html
-<div class="project-image">
-    <img src="project1.jpg" alt="Project 1">
-</div>
-```
-
-For modal images, update in JavaScript:
-```javascript
-image: "project1.jpg",
-```
-
-And uncomment this line in the modal HTML:
-```javascript
-<!-- Uncomment when you have images: <img src="${project.image}" alt="${project.title}"> -->
-```
-
-## 📱 Responsive Design
-
-This template automatically optimizes for:
-- 📱 Mobile: 480px and below
-- 📱 Tablet: 768px and below
-- 💻 Desktop: Above 768px
-
-## 🎨 Modal Functionality
-
-### How It Works
-1. Click any project card to open a detailed modal
-2. Modal shows:
-   - Full project description
-   - Technologies used
-   - Key features
-   - Challenges and solutions
-   - Results and impact
-   - Links to GitHub and live demo
-3. Close modal by:
-   - Clicking the X button
-   - Clicking outside the modal
-   - Pressing Escape key
-
-### Customizing Modal Content
-Edit the `projectDetails` object in the JavaScript section to customize what appears in each project's modal.
-
-## 💡 Useful Tips
-
-### 1. Smooth Scrolling
-Already implemented! Navigation links scroll smoothly to sections.
-
-### 2. Change Hero Gradient
-Edit in `style.css`:
-
-```css
-.hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    /* Change to your preferred colors */
-}
-```
-
-### 3. Add Custom Fonts
-Add Google Fonts to `<head>` in `index.html`:
-
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-```
-
-Then in `style.css`:
-
-```css
-body {
-    font-family: 'Inter', sans-serif;
-}
-```
-
-### 4. Add More Sections
-To add a new section:
-
-```html
-<!-- New section example -->
-<section id="experience" class="experience">
-    <div class="container">
-        <h2 class="section-title">Experience</h2>
-        <div class="experience-content">
-            <!-- Add content here -->
-        </div>
-    </div>
-</section>
-```
-
-Add to navigation:
-```html
-<li><a href="#experience" class="nav-link">Experience</a></li>
-```
-
-## 🔧 Troubleshooting
-
-### Q: Mobile menu doesn't close
-A: Check that JavaScript is properly loaded. Ensure the `<script>` tag is at the bottom of `index.html`.
-
-### Q: Modal doesn't open
-A: Make sure the project ID in `onclick="openModal('projectId')"` matches the key in `projectDetails` object.
-
-### Q: Colors not changing
-A: Clear browser cache and hard refresh (Ctrl+F5 or Cmd+Shift+R).
-
-### Q: GitHub Pages not showing
-A: Verify filename is exactly `index.html` and repository name is `username.github.io`.
-
-## 📚 Learn More
-
-- [HTML Basics](https://developer.mozilla.org/en-US/docs/Web/HTML)
-- [CSS Basics](https://developer.mozilla.org/en-US/docs/Web/CSS)
-- [JavaScript Basics](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [GitHub Pages Documentation](https://pages.github.com/)
-
-## 🤝 Contributing
-
-Found a bug or have suggestions? Feel free to open an issue or submit a pull request!
-
-## 📝 License
-
-This template is free to use for your personal portfolio!
 
 ---
 
-Created: 2024  
-Build your amazing portfolio! 🚀
+## 📱 Responsive Design
+
+The portfolio is fully responsive and optimized for:
+- **Desktop**: Full-featured experience with hover effects
+- **Tablet**: Adapted layouts (max-width: 768px)
+- **Mobile**: Neumorphic navigation menu, optimized content (max-width: 480px)
+
+---
+
+## 🎆 Special Features
+
+### Fireworks Animation
+The hero section features a beautiful CSS-based fireworks animation that adds a celebratory touch to the portfolio. The animation:
+- Launches from the bottom of the screen
+- Rises smoothly to the top
+- Expands in a circular pattern
+- Fades gracefully
+- Runs continuously with multiple fireworks
+
+### Neumorphic Mobile Menu
+The mobile navigation uses a modern neumorphism design:
+- Soft shadows creating a 3D effect
+- Smooth slide-in animation from the right
+- Tactile button press effects
+- Clean, minimalist aesthetic
+
+---
+
+## 🤖 Built with Claude AI
+
+This portfolio website was developed with assistance from **Claude AI by Anthropic**. Claude helped with:
+- ✨ HTML structure and semantic markup
+- 🎨 CSS styling and animations
+- 💻 JavaScript functionality
+- 🎆 Fireworks animation implementation
+- 📱 Responsive design optimization
+- 🔧 Bug fixes and refinements
+
+Claude AI provided guidance on best practices, helped troubleshoot issues, and assisted in creating a polished, professional portfolio website.
+
+---
+
+## 📞 Contact
+
+**Donghyun "Danny" Kang**
+
+- 📧 Email: [donghyunkang.dev@gmail.com](mailto:donghyunkang.dev@gmail.com)
+- 💻 GitHub: [@donghyunkang-digipen](https://github.com/donghyunkang-digipen)
+- 💼 LinkedIn: [kang-dev](https://linkedin.com/in/kang-dev)
+
+---
+
+## 📄 License
+
+This project is open source and available for personal use. Feel free to use it as a template for your own portfolio!
+
+---
+
+## 🙏 Acknowledgments
+
+- **DigiPen Institute of Technology** - For my education in Computer Science RTIS
+- **Claude AI by Anthropic** - For development assistance and guidance
+- **The Developer Community** - For inspiration and resources
+
+---
+
+## 🔮 Future Enhancements
+
+- [ ] Add more interactive project demos
+- [ ] Implement dark mode toggle
+- [ ] Add blog section
+- [ ] Include project filtering by technology
+- [ ] Add loading animations
+- [ ] Integrate with GitHub API for dynamic project updates
+- [ ] Add testimonials section
+- [ ] Implement contact form with backend
+
+---
+
+<div align="center">
+
+**⭐ Star this repo if you found it helpful!**
+
+Made with ❤️ and ☕ by Danny Kang
+
+*Powered by Claude AI*
+
+</div>
