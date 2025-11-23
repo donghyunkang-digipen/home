@@ -1,94 +1,105 @@
 [
   {
-    "id": "academic1",
+    "id": "spooky-runner",
     "category": "academic",
-    "title": "Spooky Runner - Live Service Game",
-    "duration": "September 2025 - Present",
-    "image": "assets/images/spooky-runner-screenshot.jpg",
-    "description": "Full-stack backend system for 'Spooky Runner,' a live service game developed in Unity as part of GAM400. As the server developer for team 'The Respawn Bureau,' I implemented client-side score calculation in Unity (C#), built a Node.js backend with real-time leaderboard system, and created a designer-friendly CSV-based game balance system. Migrated from local XAMPP to Oracle Cloud for 24/7 availability.",
-    "technologies": [
-      "Unity",
-      "C#",
-      "Node.js",
-      "MySQL",
-      "Oracle Cloud",
-      "XAMPP",
-      "CSV Parsing"
-    ],
+    "title": "Spooky Runner",
+    "duration": "Sep 2025 - Present",
+    "image": "assets/images/spooky-runner.jpg",
+    "description": "Served as the Backend Programmer on an 11-member team leading server-side development for a live-service game.",
+    "technologies": ["C#", "Unity", "Node.js", "MySQL"],
     "features": [
-      "Client-Side Score System: Implemented score calculation logic in Unity using C#, processing player actions and game events in real-time",
-      "Real-time Leaderboard System: Built Node.js backend to receive score data from Unity clients and maintain live rankings with MySQL database",
-      "CSV-based Balance System: Created parsing system allowing designers to adjust in-game upgrade values by simply modifying CSV files, integrated with Unity's resource loading",
-      "Admin Dashboard: Developed web-based administrative interface for record deletion and monitoring player activity metrics"
+      "Implemented score calculation logic in Unity using C#, processing player actions and game events in real-time",
+      "Established a stable 24/7 live service environment by migrating the full-stack backend architecture from local servers to Oracle Cloud",
+      "Engineered a real-time leaderboard system using Node.js and MySQL with optimized SQL queries",
+      "Accelerated the development cycle by creating a CSV-based parsing tool for designers to balance gameplay values",
+      "Built a web-based admin dashboard for monitoring player activity and managing records"
     ],
-    "challenges": "Initially deployed using a local XAMPP server, but discovered availability issues when the host PC was offline. After evaluating various cloud hosting solutions, migrated to Oracle Cloud's free tier to ensure continuous service. Implemented score validation on both client and server sides to prevent cheating. Applied database design principles and SQL query optimization from CS211 (Intro to Database) to handle concurrent player requests efficiently.",
-    "results": "Successfully established a stable 24/7 server environment enabling seamless multiplayer experience. The CSV-based system significantly accelerated iteration speed, allowing designers to independently balance gameplay without programmer intervention. Handled multiple concurrent players with optimized database queries, maintaining responsive performance for score submissions. The admin dashboard provided essential tools for monitoring player engagement and maintaining data integrity throughout the live service period.",
+    "challenges": "Migrating from local servers to Oracle Cloud to ensure 24/7 availability and handling concurrent player requests efficiently.",
+    "results": "Successfully established a stable live service environment and optimized development workflow with custom tools.",
     "links": {
       "github": "https://github.com/MinerSheep/TheRespawnBureau",
       "demo": ""
     }
   },
   {
-    "id": "academic2",
+    "id": "children-sleeping",
     "category": "academic",
-    "title": "Academic Project Title 2",
-    "duration": "",
-    "image": "",
-    "description": "Brief description of your academic project. Click to see more details.",
-    "technologies": [
-      "Java",
-      "Data Structures"
-    ],
+    "title": "The Children Are Sleeping",
+    "duration": "Sep 2024 - May 2025",
+    "image": "assets/images/children-sleeping.jpg",
+    "description": "Led VFX creation and rendering optimization as the team's Graphics Programmer on a 13-member team.",
+    "technologies": ["Blueprint", "Unreal Engine", "Niagara", "Optimization"],
     "features": [
-      "Feature 1: Description",
-      "Feature 2: Description"
+      "Engineered a dynamic post-processing system to visually represent player sanity with vignette and grayscale effects",
+      "Authored key gameplay VFX in Niagara based on artist’s concept art, including item glows and monster threat auras",
+      "Profiled the rendering pipeline with Unreal Insights to identify and resolve performance bottlenecks",
+      "Implemented strategic lighting optimizations, such as using static shadows in Lumen, to boost framerates by over 30 FPS",
+      "Developed the technical art pipeline with parameter-driven materials and VFX documentation"
     ],
-    "challenges": "Challenges faced during development.",
-    "results": "Project outcomes and learnings.",
+    "challenges": "Balancing high-quality visual effects with performance requirements in Unreal Engine 5.",
+    "results": "Boosted framerates by over 30 FPS through lighting optimizations and established an efficient technical art pipeline.",
     "links": {
       "github": "",
       "demo": ""
     }
   },
   {
-    "id": "personal1",
-    "category": "personal",
-    "title": "Personal Project Title 1",
-    "duration": "",
-    "image": "",
-    "description": "Brief description of your personal project. Click to see more details.",
-    "technologies": [
-      "React",
-      "Node.js"
-    ],
+    "id": "kingdom-boardgames",
+    "category": "academic",
+    "title": "Kingdom of Boardgames",
+    "duration": "Feb 2024 - Jul 2024",
+    "image": "assets/images/kingdom-boardgames.jpg",
+    "description": "Implemented a custom shader component and authored shaders in the custom 2D game engine as a Tool Developer.",
+    "technologies": ["C++", "OpenGL", "GLSL", "Game Engine"],
     "features": [
-      "Feature 1",
-      "Feature 2"
+      "Architected a centralized shader manager using a custom GLShaderArray to load and apply all shaders instantly",
+      "Authored four GLSL shaders that add dynamic fog, rain, lightning, and flowing waters, boosting overall visual immersion",
+      "Enabled shader animations by developing a custom stopwatch component to pass the engine’s delta time to fragment shaders",
+      "Provided an accessible shader pipeline that allowed team members to apply visual effects using a simple Enum for shader type"
     ],
-    "challenges": "Challenges...",
-    "results": "Impact...",
+    "challenges": "Integrating a flexible shader system into a custom 2D game engine for non-technical team members.",
+    "results": "Successfully implemented dynamic environmental effects and created an accessible tool for artists/designers.",
     "links": {
       "github": "",
       "demo": ""
     }
   },
   {
-    "id": "personal2",
-    "category": "personal",
-    "title": "Personal Project Title 2",
-    "duration": "",
-    "image": "",
-    "description": "Brief description of your personal project.",
-    "technologies": [
-      "JavaScript",
-      "API"
-    ],
+    "id": "if-i-were-king",
+    "category": "academic",
+    "title": "If I Were the King",
+    "duration": "Jan 2024",
+    "image": "assets/images/if-i-were-king.jpg",
+    "description": "Implemented UI from scratch in 'If I Were the King', serving as the dedicated UI/UX programmer on a 6-member team.",
+    "technologies": ["Unity", "C#", "UI/UX", "DOTween"],
     "features": [
-      "Feature 1",
-      "Feature 2"
+      "Wrote C# scripts and used UGUI to implement a tutorial sequence, settings panels, and HUDs with dynamic resource gauges",
+      "Utilized DOTween library and Unity’s Timeline to make procedural UI animations and narrative cutscenes with visual effects",
+      "Earned a formal certification for successfully completing the program and delivering the final team project over a 3-week sprint"
     ],
-    "challenges": "Challenges...",
-    "results": "Results...",
+    "challenges": "Delivering a polished UI/UX experience within a short 3-week sprint.",
+    "results": "Completed the project successfully with dynamic UI animations and earned formal certification.",
+    "links": {
+      "github": "",
+      "demo": ""
+    }
+  },
+  {
+    "id": "palagang",
+    "category": "academic",
+    "title": "Palagang",
+    "duration": "Aug 2023 - Dec 2023",
+    "image": "assets/images/palagang.jpg",
+    "description": "Architected a 2D game engine from scratch, as the team’s Engine Programmer and Producer.",
+    "technologies": ["C++", "OpenGL", "SDL2", "SFML"],
+    "features": [
+      "Integrated foundational libraries for core game engine functions: SDL2 (Window), OpenGL (Graphics), SFML (Audio)",
+      "Diagnosed and resolved critical engine-level bugs, caused by dangling pointers and an input processing error",
+      "Engineered a font rendering system that parsed and drew characters from a single sprite sheet",
+      "Developed a trigger system for complex AI state changes and a Verlet-based physics engine with AABB collision detection"
+    ],
+    "challenges": "Building a game engine from scratch and resolving low-level memory and input issues.",
+    "results": "Built a functional 2D engine with physics, audio, and font rendering systems.",
     "links": {
       "github": "",
       "demo": ""
