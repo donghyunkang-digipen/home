@@ -1,0 +1,97 @@
+[
+  {
+    "id": "academic1",
+    "category": "academic",
+    "title": "Spooky Runner - Live Service Game",
+    "duration": "September 2025 - Present",
+    "image": "assets/images/spooky-runner-screenshot.jpg",
+    "description": "Full-stack backend system for 'Spooky Runner,' a live service game developed in Unity as part of GAM400. As the server developer for team 'The Respawn Bureau,' I implemented client-side score calculation in Unity (C#), built a Node.js backend with real-time leaderboard system, and created a designer-friendly CSV-based game balance system. Migrated from local XAMPP to Oracle Cloud for 24/7 availability.",
+    "technologies": [
+      "Unity",
+      "C#",
+      "Node.js",
+      "MySQL",
+      "Oracle Cloud",
+      "XAMPP",
+      "CSV Parsing"
+    ],
+    "features": [
+      "Client-Side Score System: Implemented score calculation logic in Unity using C#, processing player actions and game events in real-time",
+      "Real-time Leaderboard System: Built Node.js backend to receive score data from Unity clients and maintain live rankings with MySQL database",
+      "CSV-based Balance System: Created parsing system allowing designers to adjust in-game upgrade values by simply modifying CSV files, integrated with Unity's resource loading",
+      "Admin Dashboard: Developed web-based administrative interface for record deletion and monitoring player activity metrics"
+    ],
+    "challenges": "Initially deployed using a local XAMPP server, but discovered availability issues when the host PC was offline. After evaluating various cloud hosting solutions, migrated to Oracle Cloud's free tier to ensure continuous service. Implemented score validation on both client and server sides to prevent cheating. Applied database design principles and SQL query optimization from CS211 (Intro to Database) to handle concurrent player requests efficiently.",
+    "results": "Successfully established a stable 24/7 server environment enabling seamless multiplayer experience. The CSV-based system significantly accelerated iteration speed, allowing designers to independently balance gameplay without programmer intervention. Handled multiple concurrent players with optimized database queries, maintaining responsive performance for score submissions. The admin dashboard provided essential tools for monitoring player engagement and maintaining data integrity throughout the live service period.",
+    "links": {
+      "github": "https://github.com/MinerSheep/TheRespawnBureau",
+      "demo": ""
+    }
+  },
+  {
+    "id": "academic2",
+    "category": "academic",
+    "title": "Academic Project Title 2",
+    "duration": "",
+    "image": "",
+    "description": "Brief description of your academic project. Click to see more details.",
+    "technologies": [
+      "Java",
+      "Data Structures"
+    ],
+    "features": [
+      "Feature 1: Description",
+      "Feature 2: Description"
+    ],
+    "challenges": "Challenges faced during development.",
+    "results": "Project outcomes and learnings.",
+    "links": {
+      "github": "",
+      "demo": ""
+    }
+  },
+  {
+    "id": "personal1",
+    "category": "personal",
+    "title": "Personal Project Title 1",
+    "duration": "",
+    "image": "",
+    "description": "Brief description of your personal project. Click to see more details.",
+    "technologies": [
+      "React",
+      "Node.js"
+    ],
+    "features": [
+      "Feature 1",
+      "Feature 2"
+    ],
+    "challenges": "Challenges...",
+    "results": "Impact...",
+    "links": {
+      "github": "",
+      "demo": ""
+    }
+  },
+  {
+    "id": "personal2",
+    "category": "personal",
+    "title": "Personal Project Title 2",
+    "duration": "",
+    "image": "",
+    "description": "Brief description of your personal project.",
+    "technologies": [
+      "JavaScript",
+      "API"
+    ],
+    "features": [
+      "Feature 1",
+      "Feature 2"
+    ],
+    "challenges": "Challenges...",
+    "results": "Results...",
+    "links": {
+      "github": "",
+      "demo": ""
+    }
+  }
+]

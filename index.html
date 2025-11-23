@@ -5,28 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donghyun "Danny" Kang - Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-<!-- Three.js CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-<script>
-// DOM이 로드될 때까지 기다리기
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Script loaded!');
-    
-    // 간단한 CSS 폭죽 애니메이션 적용
-    const heroSection = document.querySelector('.hero');
-    if (heroSection) {
-        heroSection.classList.add('hero-fireworks');
-        console.log('CSS fireworks animation added!');
-    }
-});
-</script>
 <body>
-    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="container">
-            <a href="#home" class="logo">Danny Kang</a>
+            <a href="#home" class="logo">Donghyun Kang</a>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
@@ -34,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <li><a href="#contact" class="nav-link">Contact</a></li>
                 <li><a href="#resume" class="nav-link">Resume</a></li>
             </ul>
-            <!-- Mobile menu button -->
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -43,12 +27,11 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Hi, I'm <span class="highlight">Donghyun "Danny" Kang</span></h1>
-                <p class="hero-subtitle">Computer Science Student <br> passionate about Graphics Programming</p>
+                <p class="hero-subtitle">Software Engineer </p>
                 <p class="hero-description">
                     Driven by curiosity, proven by results.<br>
                     I enjoy building projects that solve real-world problems and learning new skills along the way.
@@ -58,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
@@ -67,18 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h3>Introduction</h3>
                     <p>
                     Hello, I'm Donghyun "Danny" Kang!
-
-                    I am a software engineer pursuing a
-                    Bachelor of Science in Computer
-                    Science RTIS at the DigiPen Institute
-                    of Technology, Redmond WA.
+                    I am a software engineer pursuing a Bachelor of Science in Computer Science RTIS at the DigiPen Institute of Technology, Redmond WA.
                     <br><br>
-                    The process may be challenging, but
-                    the sense of accomplishment drives
-                    me to take another step forward!
+                    The process may be challenging, but the sense of accomplishment drives me to take another step forward!
                     </p>
                     
-                    <!-- Education Section -->
                     <div class="education">
                         <h4>Education</h4>
                         <div class="education-item">
@@ -93,10 +68,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             <p class="education-details">Minor in Mathematics</p>
                             <p class="education-details">Relevant Coursework: Advanced Computer Graphics I, Ray Tracing, Linear Algebra, Curves and Surfaces, Vector Calculus II, Advanced C/C++, Algorithm Analysis, Data Structures</p>
                         </div>
-                        <!-- Add more education entries if needed -->
                     </div>
 
-                    <!-- Experience/Volunteer Section -->
                     <div class="experience">
                         <h4>Experience</h4>
                         <div class="experience-item">
@@ -112,13 +85,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <li>Assisted with conference operations and attendee support</li>
                                 <li>Collaborated with international team members</li>
                                 <li>Gained exposure to cutting-edge computer graphics research</li>
-                                <!-- Add your specific responsibilities -->
                             </ul>
                         </div>
-                        <!-- Add more experience entries if needed -->
                     </div>
                     
-                    <!-- Skills Section -->
                     <div class="skills">
                         <h4>Skills & Technologies</h4>
                         <div class="skill-tags">
@@ -134,15 +104,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             <span class="tag">GitHub</span>
                             <span class="tag">Perforce</span>
                             <span class="tag">Maya</span>
-                            <!-- Add more skills as needed -->
                         </div>
                     </div>
                 </div>
                 
-                <!-- Profile Image (optional) -->
                 <div class="about-image">
                     <div class="image-placeholder">
-                        <!-- Add your image here: <img src="profile.jpg" alt="Danny Kang"> -->
                         <p>Profile Photo</p>
                     </div>
                 </div>
@@ -150,95 +117,24 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </section>
 
-    <!-- Student Projects Section -->
     <section id="academic" class="projects">
         <div class="container">
             <h2 class="section-title">Student Projects</h2>
-            <div class="projects-grid">
-                
-                <!-- Academic Project 1 -->
-                <div class="project-card" onclick="openModal('academic1')">
-                    <div class="project-image">
-                        <!-- Add project image here -->
-                        <img src="assets/images/spooky-runner-screenshot.jpg" alt="Spooky Runner Game">
-                    </div>
-                    <div class="project-info">
-                        <h3>Spooky Runner - Live Service Game</h3>
-                        <p class="project-date">September 2025 - Present</p>
-                        <p>Developed full-stack system for GAM400 live service project. Built Unity client-side score calculation and Node.js backend with real-time leaderboard on Oracle Cloud.</p>
-                        <div class="project-tags">
-                            <span class="tag">Unity</span>
-                            <span class="tag">C#</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MySQL</span>
-                        </div>      
-                    </div>
-                </div>
-
-                <!-- Academic Project 2 -->
-                <div class="project-card" onclick="openModal('academic2')">
-                    <div class="project-image">
-                        <div class="image-placeholder">Project 2</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Academic Project Title 2</h3>
-                        <p>Brief description of your academic project. Click to see more details.</p>
-                        <div class="project-tags">
-                            <span class="tag">Java</span>
-                            <span class="tag">Data Structures</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Add more academic projects by copying the project-card block -->
-                
+            <div class="projects-grid" id="academic-projects-container">
+                <p style="grid-column: 1/-1; text-align: center;">Loading projects...</p>
             </div>
         </div>
     </section>
 
-    <!-- Personal Projects Section -->
     <section id="personal" class="projects projects-alt">
         <div class="container">
             <h2 class="section-title">Personal Projects</h2>
-            <div class="projects-grid">
-                
-                <!-- Personal Project 1 -->
-                <div class="project-card" onclick="openModal('personal1')">
-                    <div class="project-image">
-                        <div class="image-placeholder">Project 1</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Personal Project Title 1</h3>
-                        <p>Brief description of your personal project. Click to see more details.</p>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Personal Project 2 -->
-                <div class="project-card" onclick="openModal('personal2')">
-                    <div class="project-image">
-                        <div class="image-placeholder">Project 2</div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Personal Project Title 2</h3>
-                        <p>Brief description of your personal project. Click to see more details.</p>
-                        <div class="project-tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">API</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Add more personal projects by copying the project-card block -->
-                
+            <div class="projects-grid" id="personal-projects-container">
+                 <p style="grid-column: 1/-1; text-align: center;">Loading projects...</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Contact Me</h2>
@@ -246,11 +142,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p class="contact-text">
                     Feel free to reach out for collaborations, opportunities, or just to say hi!
                 </p>
-                
                 <div class="contact-links">
-                    <a href="mailto:donghyunkang.dev@gmail.com" class="contact-link">
+                    <a href="mailto:donghyun.kang.dev@gmail.com" class="contact-link">
                         <span class="icon">✉️</span>
-                        <span>donghyunkang.dev@gmail.com</span>
+                        <span>donghyun.kang.dev@gmail.com</span>
                     </a>
                     <a href="https://github.com/donghyunkang-digipen" target="_blank" class="contact-link">
                         <span class="icon">💻</span>
@@ -265,7 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </section>
 
-    <!-- Resume Section -->
     <section id="resume" class="resume">
         <div class="container">
             <h2 class="section-title">Resume</h2>
@@ -273,8 +167,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p class="resume-text">
                     View my resume below or download it for offline viewing.
                 </p>
-                
-                <!-- PDF Preview (Desktop/Tablet) -->
                 <div class="resume-preview resume-pdf-view">
                     <iframe src="assets/resume.pdf" type="application/pdf"></iframe>
                     <div class="resume-fallback">
@@ -282,15 +174,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p class="fallback-text">Please download the PDF to view the resume</p>
                     </div>
                 </div>
-
-                <!-- HTML Resume (Mobile) - Loaded dynamically from assets/resume.html -->
                 <div class="resume-html-view">
                     <div class="resume-html-content">
-                        <!-- Resume content will be loaded here by JavaScript -->
-                    </div>
+                        </div>
                 </div>
-                
-                <!-- Download Button -->
                 <a href="assets/resume.pdf" class="btn btn-primary" download>
                     📥 Download Resume (PDF)
                 </a>
@@ -298,177 +185,121 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Donghyun "Danny" Kang. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Modal for Project Details -->
     <div id="projectModal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal()">&times;</span>
             <div id="modalBody">
-                <!-- Modal content will be inserted here by JavaScript -->
-            </div>
+                </div>
         </div>
     </div>
 
-    <!-- JavaScript -->
     <script>
-        // Load resume.html content for mobile view
-        function loadResumeHTML() {
-            const container = document.querySelector('.resume-html-content');
+        // 전역 변수: 로드된 모든 프로젝트 데이터를 저장
+        let allProjectsData = [];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Script loaded!');
             
-            // Show loading message
-            container.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666;">Loading resume...</p>';
-            
-            fetch('assets/resume.html')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.text();
-                })
-                .then(html => {
-                    // Parse the HTML and extract the body content
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const resumeContent = doc.querySelector('.container');
-                    
-                    if (resumeContent) {
-                        container.innerHTML = resumeContent.innerHTML;
-                        console.log('Resume loaded successfully');
-                    } else {
-                        throw new Error('Could not find resume content');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error loading resume:', error);
-                    container.innerHTML = 
-                        '<p style="text-align: center; padding: 2rem; color: #666;">Unable to load resume content.<br>Please download the PDF version below.</p>';
-                });
+            // 1. 히어로 섹션 폭죽 효과
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                heroSection.classList.add('hero-fireworks');
+            }
+
+            // 2. 이력서 로드 (모바일용)
+            loadResumeHTML();
+
+            // 3. JSON 파일에서 프로젝트 데이터 불러오기 (핵심 기능!)
+            fetchProjects();
+        });
+
+        // --- JSON 데이터 로드 함수 ---
+        async function fetchProjects() {
+            try {
+                // assets/projects.json 파일을 읽어옵니다.
+                const response = await fetch('assets/projects.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                // 데이터를 JSON으로 변환하여 전역 변수에 저장
+                allProjectsData = await response.json();
+                console.log('Projects loaded:', allProjectsData);
+
+                // 화면에 뿌리기
+                renderProjects('academic', 'academic-projects-container');
+                renderProjects('personal', 'personal-projects-container');
+
+            } catch (error) {
+                console.error('Error loading projects:', error);
+                document.getElementById('academic-projects-container').innerHTML = 
+                    '<p style="text-align: center; color: red;">Failed to load projects. (Please use Live Server)</p>';
+            }
         }
 
-        // Load resume on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            loadResumeHTML();
-        });
+        // --- 프로젝트 카드 렌더링 함수 ---
+        function renderProjects(category, containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
 
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
+            // 해당 카테고리(academic/personal)에 맞는 것만 필터링
+            const filteredProjects = allProjectsData.filter(p => p.category === category);
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
+            // HTML 생성
+            container.innerHTML = filteredProjects.map(project => `
+                <div class="project-card" onclick="openModal('${project.id}')">
+                    <div class="project-image">
+                        ${project.image && !project.image.includes('placeholder')
+                            ? `<img src="${project.image}" alt="${project.title}">`
+                            : `<div class="image-placeholder">${project.title}</div>`
+                        }
+                    </div>
+                    <div class="project-info">
+                        <h3>${project.title}</h3>
+                        ${project.duration ? `<p class="project-date" style="color:#666; font-size:0.9em; margin-bottom:0.5rem;">${project.duration}</p>` : ''}
+                        <p>${truncateText(project.description, 100)}</p>
+                        <div class="project-tags">
+                            ${project.technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
+                        </div>      
+                    </div>
+                </div>
+            `).join('');
+        }
 
+        // 텍스트 길이 자르기 헬퍼 함수
+        function truncateText(text, maxLength) {
+            if (!text) return '';
+            return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+        }
 
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-link, .dropdown-link').forEach(link => {
-            link.addEventListener('click', () => {
-                // 드롭다운 토글이 아닌 경우에만 메뉴 닫기
-                if (!link.classList.contains('dropdown-toggle')) {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                    if (navDropdown) {
-                        navDropdown.classList.remove('active');
-                    }
-                }
-            });
-        });
-
-        // Add scrolled class to navbar on scroll
-
-        // Project details data
-        const projectDetails = {
-            academic1: {
-                title: "Spooky Runner - Live Service Game",
-                duration: "September 2025 - Present",
-                image: "assets/images/spooky-runner-screenshot.jpg",
-                description: "Full-stack backend system for 'Spooky Runner,' a live service game developed in Unity as part of GAM400. As the server developer for team 'The Respawn Bureau,' I implemented client-side score calculation in Unity (C#), built a Node.js backend with real-time leaderboard system, and created a designer-friendly CSV-based game balance system. Migrated from local XAMPP to Oracle Cloud for 24/7 availability.",
-                technologies: ["Unity", "C#", "Node.js", "MySQL", "Oracle Cloud", "XAMPP", "CSV Parsing"],
-                features: [
-                    "Client-Side Score System: Implemented score calculation logic in Unity using C#, processing player actions and game events in real-time",
-                    "Real-time Leaderboard System: Built Node.js backend to receive score data from Unity clients and maintain live rankings with MySQL database",
-                    "CSV-based Balance System: Created parsing system allowing designers to adjust in-game upgrade values by simply modifying CSV files, integrated with Unity's resource loading",
-                    "Admin Dashboard: Developed web-based administrative interface for record deletion and monitoring player activity metrics"
-                ],
-                challenges: "Initially deployed using a local XAMPP server, but discovered availability issues when the host PC was offline. After evaluating various cloud hosting solutions, migrated to Oracle Cloud's free tier to ensure continuous service. Implemented score validation on both client and server sides to prevent cheating. Applied database design principles and SQL query optimization from CS211 (Intro to Database) to handle concurrent player requests efficiently.",
-                results: "Successfully established a stable 24/7 server environment enabling seamless multiplayer experience. The CSV-based system significantly accelerated iteration speed, allowing designers to independently balance gameplay without programmer intervention. Handled multiple concurrent players with optimized database queries, maintaining responsive performance for score submissions. The admin dashboard provided essential tools for monitoring player engagement and maintaining data integrity throughout the live service period.",
-                links: {
-                    github: "https://github.com/MinerSheep/TheRespawnBureau",
-                    demo: ""
-                }
-            },
-            academic2: {
-                title: "Academic Project Title 2",
-                image: "project2.jpg",
-                description: "Full detailed description of your second academic project.",
-                technologies: ["Java", "Data Structures", "Algorithms"],
-                features: [
-                    "Feature 1: Description",
-                    "Feature 2: Description"
-                ],
-                challenges: "Challenges faced during development.",
-                results: "Project outcomes and learnings.",
-                links: {
-                    github: "",
-                    demo: ""
-                }
-            },
-            personal1: {
-                title: "Personal Project Title 1",
-                image: "personal1.jpg",
-                description: "Full detailed description of your personal project.",
-                technologies: ["React", "Node.js", "MongoDB", "Express"],
-                features: [
-                    "Feature 1: Description",
-                    "Feature 2: Description",
-                    "Feature 3: Description"
-                ],
-                challenges: "Challenges and solutions.",
-                results: "Impact and learning outcomes.",
-                links: {
-                    github: "",
-                    demo: ""
-                }
-            },
-            personal2: {
-                title: "Personal Project Title 2",
-                image: "personal2.jpg",
-                description: "Full detailed description of your second personal project.",
-                technologies: ["JavaScript", "API", "HTML/CSS"],
-                features: [
-                    "Feature 1: Description",
-                    "Feature 2: Description"
-                ],
-                challenges: "Technical challenges overcome.",
-                results: "Project achievements.",
-                links: {
-                    github: "",
-                    demo: ""
-                }
-            }
-        };
-
-        // Open modal with project details
+        // --- 모달 관련 함수 (JSON 데이터 사용) ---
         function openModal(projectId) {
             const modal = document.getElementById('projectModal');
             const modalBody = document.getElementById('modalBody');
-            const project = projectDetails[projectId];
+            
+            // 전역 변수(allProjectsData)에서 클릭한 프로젝트 찾기
+            const project = allProjectsData.find(p => p.id === projectId);
 
-            if (!project) return;
+            if (!project) {
+                console.error("Project not found:", projectId);
+                return;
+            }
 
-            // Build modal content
+            // 모달 내용 HTML 만들기
             let modalHTML = `
                 <h2>${project.title}</h2>
                 ${project.duration ? `<p class="modal-duration">${project.duration}</p>` : ''}
                 <div class="modal-image">
-                    <div class="image-placeholder">${project.title}</div>
-                    <!-- Uncomment when you have images: <img src="${project.image}" alt="${project.title}"> -->
+                    ${project.image && !project.image.includes('placeholder')
+                        ? `<img src="${project.image}" alt="${project.title}">`
+                        : `<div class="image-placeholder">${project.title}</div>`
+                    }
                 </div>
                 
                 <div class="modal-section">
@@ -514,22 +345,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
             modalBody.innerHTML = modalHTML;
             modal.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
         }
 
-        // Close modal
         function closeModal() {
             const modal = document.getElementById('projectModal');
             modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
+            document.body.style.overflow = 'auto';
         }
 
-        // Show coming soon alert
-        function showComingSoon(type) {
-            alert(`${type} is not available yet. This feature is coming soon!`);
+        // --- 기타 UI 기능 (햄버거 메뉴, 이력서 등) ---
+        
+        // 햄버거 메뉴
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if(hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
         }
 
-        // Close modal when clicking outside
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if(hamburger) hamburger.classList.remove('active');
+                if(navMenu) navMenu.classList.remove('active');
+            });
+        });
+
+        // 모달 외부 클릭 시 닫기
         window.onclick = function(event) {
             const modal = document.getElementById('projectModal');
             if (event.target === modal) {
@@ -537,12 +382,41 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Close modal with Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeModal();
             }
         });
+
+        function showComingSoon(type) {
+            alert(`${type} is not available yet. This feature is coming soon!`);
+        }
+
+        // Resume HTML 로드 (모바일용)
+        function loadResumeHTML() {
+            const container = document.querySelector('.resume-html-content');
+            if(!container) return;
+
+            container.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666;">Loading resume...</p>';
+            
+            fetch('assets/resume.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.text();
+                })
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const resumeContent = doc.querySelector('.container');
+                    if (resumeContent) {
+                        container.innerHTML = resumeContent.innerHTML;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading resume:', error);
+                    container.innerHTML = '<p style="text-align: center;">Unable to load resume preview.</p>';
+                });
+        }
     </script>
 </body>
 </html>
