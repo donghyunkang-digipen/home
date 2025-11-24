@@ -4,7 +4,7 @@
     "category": "academic",
     "title": "Spooky Runner",
     "duration": "Sep 2025 - Present",
-    "image": "assets/images/spooky-runner.jpg",
+    "image": "assets/images/SR/SR_TitleScreen.png",
     "description": "Served as the Backend Programmer on an 11-member team leading server-side development for a live-service game.",
     "technologies": ["C#", "Unity", "Node.js", "MySQL"],
     "features": [
@@ -26,7 +26,12 @@
     "category": "academic",
     "title": "The Children Are Sleeping",
     "duration": "Sep 2024 - May 2025",
-    "image": "assets/images/children-sleeping.jpg",
+    "image": "assets/images/TCAS/TCAS_TitleScreen.png",
+    "gallery": [ 
+      "assets/images/TCAS/TCAS_TitleScreen.png",
+      "assets/images/TCAS/TCAS_Ingame1.png",
+      "assets/images/TCAS/TCAS_Ingame2.png"
+    ],
     "description": "Led VFX creation and rendering optimization as the team's Graphics Programmer on a 13-member team.",
     "technologies": ["Blueprint", "Unreal Engine", "Niagara", "Optimization"],
     "features": [
@@ -40,7 +45,7 @@
     "results": "Boosted framerates by over 30 FPS through lighting optimizations and established an efficient technical art pipeline.",
     "links": {
       "github": "",
-      "demo": ""
+      "demo": "https://youtu.be/sFZGCw8Hm4k"
     }
   },
   {
@@ -48,7 +53,13 @@
     "category": "academic",
     "title": "Kingdom of Boardgames",
     "duration": "Feb 2024 - Jul 2024",
-    "image": "assets/images/kingdom-boardgames.jpg",
+    "image": "assets/images/KOB/KOB_TitleScreen.png",
+    "gallery": [ 
+      "assets/images/KOB/KOB_TitleScreen.png",
+      "assets/images/KOB/KOB_Ingame1.png",
+      "assets/images/KOB/KOB_Ingame2.png",
+      "assets/images/KOB/KOB_Ingame3.png"
+    ],
     "description": "Implemented a custom shader component and authored shaders in the custom 2D game engine as a Tool Developer.",
     "technologies": ["C++", "OpenGL", "GLSL", "Game Engine"],
     "features": [
@@ -61,7 +72,7 @@
     "results": "Successfully implemented dynamic environmental effects and created an accessible tool for artists/designers.",
     "links": {
       "github": "",
-      "demo": ""
+      "demo": "https://youtu.be/B1GKArn6drM"
     }
   },
   {
@@ -69,18 +80,24 @@
     "category": "academic",
     "title": "If I Were the King",
     "duration": "Jan 2024",
-    "image": "assets/images/if-i-were-king.jpg",
+    "image": "assets/images/IIWK/IIWK_TitleScreen.png",
+    "gallery": [ 
+      "assets/images/IIWK/IIWK_TitleScreen.png",
+      "assets/images/IIWK/IIWK_Ingame1.png",
+      "assets/images/IIWK/IIWK_Ingame2.png"
+    ],
     "description": "Implemented UI from scratch in 'If I Were the King', serving as the dedicated UI/UX programmer on a 6-member team.",
     "technologies": ["Unity", "C#", "UI/UX", "DOTween"],
     "features": [
       "Wrote C# scripts and used UGUI to implement a tutorial sequence, settings panels, and HUDs with dynamic resource gauges",
       "Utilized DOTween library and Unity’s Timeline to make procedural UI animations and narrative cutscenes with visual effects",
-      "Earned a formal certification for successfully completing the program and delivering the final team project over a 3-week sprint"
+      "Earned a formal certification for successfully completing the program and delivering the final team project over a 3-week sprint",
+      "itch.io Password: kangmakes"
     ],
     "challenges": "Delivering a polished UI/UX experience within a short 3-week sprint.",
     "results": "Completed the project successfully with dynamic UI animations and earned formal certification.",
     "links": {
-      "github": "",
+      "github": "https://github.com/donghyunkang-digipen/EPITECH",
       "demo": ""
     }
   },
@@ -89,7 +106,13 @@
     "category": "academic",
     "title": "Palagang",
     "duration": "Aug 2023 - Dec 2023",
-    "image": "assets/images/palagang.jpg",
+    "image": "assets/images/PK/PK_TitleScreen.png",
+    "gallery": [ 
+      "assets/images/PK/PK_TitleScreen.png",
+      "assets/images/PK/PK_Ingame1.png",
+      "assets/images/PK/PK_Ingame2.png",
+      "assets/images/PK/PK_Ingame3.png"
+    ],
     "description": "Architected a 2D game engine from scratch, as the team’s Engine Programmer and Producer.",
     "technologies": ["C++", "OpenGL", "SDL2", "SFML"],
     "features": [
@@ -102,7 +125,8 @@
     "results": "Built a functional 2D engine with physics, audio, and font rendering systems.",
     "links": {
       "github": "",
-      "demo": ""
+      "demo": "",
+      "guide": "assets/images/PK/PK_Technical_Guide.pdf"
     }
   }
 ]

@@ -312,74 +312,110 @@
         }
 
         // --- 모달 관련 함수 (JSON 데이터 사용) ---
-        function openModal(projectId) {
-            const modal = document.getElementById('projectModal');
-            const modalBody = document.getElementById('modalBody');
-            
-            // 전역 변수(allProjectsData)에서 클릭한 프로젝트 찾기
-            const project = allProjectsData.find(p => p.id === projectId);
+        // 현재 슬라이드 인덱스를 저장할 변수
+let currentSlideIndex = 0;
 
-            if (!project) {
-                console.error("Project not found:", projectId);
-                return;
-            }
+function openModal(projectId) {
+    const modal = document.getElementById('projectModal');
+    const modalBody = document.getElementById('modalBody');
+    
+    const project = allProjectsData.find(p => p.id === projectId);
+    if (!project) return;
 
-            // 모달 내용 HTML 만들기
-            let modalHTML = `
-                <h2>${project.title}</h2>
-                ${project.duration ? `<p class="modal-duration">${project.duration}</p>` : ''}
-                <div class="modal-image">
-                    ${project.image && !project.image.includes('placeholder')
-                        ? `<img src="${project.image}" alt="${project.title}">`
-                        : `<div class="image-placeholder">${project.title}</div>`
-                    }
-                </div>
-                
-                <div class="modal-section">
-                    <h3>Overview</h3>
-                    <p>${project.description}</p>
-                </div>
+    // 1. 이미지 슬라이더 HTML 생성 로직
+    let imageHTML = '';
+    
+    // gallery 데이터가 있는 경우 (여러 장)
+    if (project.gallery && project.gallery.length > 0) {
+        currentSlideIndex = 0; // 인덱스 초기화
+        const slides = project.gallery.map((imgSrc, index) => 
+            `<img src="${imgSrc}" class="modal-slider-img ${index === 0 ? 'active' : ''}" id="slide-${index}">`
+        ).join('');
 
-                <div class="modal-section">
-                    <h3>Technologies Used</h3>
-                    <div class="project-tags">
-                        ${project.technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
-                    </div>
-                </div>
-
-                <div class="modal-section">
-                    <h3>Key Features</h3>
-                    <ul>
-                        ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-                    </ul>
-                </div>
-
-                <div class="modal-section">
-                    <h3>Challenges & Solutions</h3>
-                    <p>${project.challenges}</p>
-                </div>
-
-                <div class="modal-section">
-                    <h3>Results & Impact</h3>
-                    <p>${project.results}</p>
-                </div>
-
-                <div class="modal-section modal-links">
-                    ${project.links.github ? 
-                        `<a href="${project.links.github}" target="_blank" class="btn btn-secondary">View on GitHub</a>` : 
-                        `<button onclick="showComingSoon('GitHub')" class="btn btn-secondary btn-disabled">View on GitHub</button>`
-                    }
-                    ${project.links.demo ? 
-                        `<a href="${project.links.demo}" target="_blank" class="btn btn-secondary">Live Demo</a>` : 
-                        `<button onclick="showComingSoon('Live Demo')" class="btn btn-secondary btn-disabled">Live Demo</button>`
-                    }
-                </div>
-            `;
-
-            modalBody.innerHTML = modalHTML;
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+        imageHTML = `
+            <div class="modal-image-container">
+                ${slides}
+                <button class="slider-btn prev-btn" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="slider-btn next-btn" onclick="changeSlide(1)">&#10095;</button>
+                <div class="slider-counter" id="sliderCounter">1 / ${project.gallery.length}</div>
+            </div>
+        `;
+    } 
+    // gallery가 없고 image만 있는 경우 (한 장)
+    else {
+        const imgSrc = project.image || '';
+        if (imgSrc && !imgSrc.includes('placeholder')) {
+            imageHTML = `
+                <div class="modal-image-container">
+                    <img src="${imgSrc}" class="modal-slider-img active">
+                </div>`;
+        } else {
+            imageHTML = `<div class="image-placeholder">${project.title}</div>`;
         }
+    }
+
+    // 2. 전체 모달 HTML 조립
+    let modalHTML = `
+        <h2>${project.title}</h2>
+        ${project.duration ? `<p class="modal-duration">${project.duration}</p>` : ''}
+        
+        ${imageHTML} <div class="modal-section">
+            <h3>Overview</h3>
+            <p>${project.description}</p>
+        </div>
+        <div class="modal-section">
+            <h3>Technologies Used</h3>
+            <div class="project-tags">
+                ${project.technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
+            </div>
+        </div>
+        <div class="modal-section">
+            <h3>Key Features</h3>
+            <ul>
+                ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+            </ul>
+        </div>
+        <div class="modal-section">
+            <h3>Challenges & Solutions</h3>
+            <p>${project.challenges}</p>
+        </div>
+        <div class="modal-section">
+            <h3>Results & Impact</h3>
+            <p>${project.results}</p>
+        </div>
+        <div class="modal-section modal-links">
+            ${project.links.github ? `<a href="${project.links.github}" target="_blank" class="btn btn-secondary">View on GitHub</a>` : ''}
+            ${project.links.demo ? `<a href="${project.links.demo}" target="_blank" class="btn btn-secondary">Live Demo</a>` : ''}
+            ${project.links.guide ? `<a href="${project.links.guide}" target="_blank" class="btn btn-secondary">📄 Technical Guide (PDF)</a>` : ''}
+        </div>
+    `;
+
+    modalBody.innerHTML = modalHTML;
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// 슬라이드 변경 함수 (이것도 script 안에 추가해주세요)
+function changeSlide(direction) {
+    // 현재 열린 모달의 이미지를 찾음
+    const slides = document.querySelectorAll('.modal-slider-img');
+    if (slides.length <= 1) return; // 이미지가 1개면 동작 안 함
+
+    // 현재 active된 슬라이드 찾기
+    slides[currentSlideIndex].classList.remove('active');
+
+    // 인덱스 계산 (무한 루프)
+    currentSlideIndex += direction;
+    if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+    if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+
+    // 다음 슬라이드 보이기
+    slides[currentSlideIndex].classList.add('active');
+
+    // 카운터 업데이트 (예: 2 / 5)
+    const counter = document.getElementById('sliderCounter');
+    if(counter) counter.innerText = `${currentSlideIndex + 1} / ${slides.length}`;
+}
 
         function closeModal() {
             const modal = document.getElementById('projectModal');
